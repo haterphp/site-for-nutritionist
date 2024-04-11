@@ -1,0 +1,46 @@
+.input {
+    @apply flex flex-col gap-[2px];
+}
+
+.input-container {
+    @apply relative
+    border-2 border-slate-300 rounded-lg
+    overflow-hidden;
+}
+
+.input-element {
+    @apply w-full  outline-none pt-[23px] p-2;
+}
+
+.input-label {
+    @apply absolute pl-2 top-[15px] transition-all;
+}
+
+.input-feedback {
+    @apply text-sm h-[20px] pl-2;
+}
+
+/* Focus state */
+
+.input.input--focus .input-container{
+    @apply border-primary-main/50;
+}
+
+.input.input--focus .input-label {
+    @apply text-primary-main;
+}
+
+.input.input--focus .input-label,
+.input-label.input-label--focus {
+    @apply -translate-y-2 text-xs;
+}
+
+/* Error state */
+.input.input--error .input-container{
+    @apply border-red-400;
+}
+
+.input.input--error .input-label,
+.input.input--error .input-feedback{
+    @apply text-red-400;
+}
