@@ -1,29 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-    @font-face {
-      font-family: "Railway";
-      font-style: normal;
-      font-weight: 400;
-      font-display: optional;
-      src: url(../shared/fonts/Raleway-Regular.ttf);
-    }
-
-    @font-face {
-      font-family: "Signika";
-      font-style: normal;
-      font-weight: 500;
-      font-display: optional;
-      src: url(../shared/fonts/Signika-Medium.ttf);
-    }
-
-    @font-face {
-      font-family: "Railway";
-      font-style: normal;
-      font-weight: 700;
-      font-display: optional;
-      src: url(../shared/fonts/Signika-Bold.ttf);
-    }
-}

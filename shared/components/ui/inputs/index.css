@@ -5,11 +5,12 @@
 .input-container {
     @apply relative
     border-2 border-slate-300 rounded-lg
+    transition-colors
     overflow-hidden;
 }
 
 .input-element {
-    @apply w-full  outline-none pt-[23px] p-2;
+    @apply w-full outline-none pt-[23px] p-2;
 }
 
 .input-label {
@@ -17,7 +18,7 @@
 }
 
 .input-feedback {
-    @apply text-sm h-[20px] pl-2;
+    @apply text-sm h-[20px] pl-2 transition-colors;
 }
 
 /* Focus state */
