@@ -1,5 +1,5 @@
 .btn {
-    @apply py-2 px-7 rounded-lg bg-slate-100 cursor-pointer transition-colors;
+    @apply py-[12px] px-[16px] rounded bg-slate-100 cursor-pointer transition-colors;
 }
 
 .btn--primary {

@@ -1,0 +1,18 @@
+.modal-title {
+  @apply flex justify-between items-start;
+}
+
+.modal-title-text {
+  @apply w-full max-w-[80%] text-2xl font-medium;
+}
+
+.modal-title-button {
+  @apply cursor-pointer p-1 h-[32px] w-[32px];
+}
+
+.modal-title-button svg {
+  @apply w-full h-full transition-colors
+    fill-gray-900
+    hover:fill-primary-main 
+    active:fill-primary-dark;
+}

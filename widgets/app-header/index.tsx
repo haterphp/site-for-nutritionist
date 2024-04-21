@@ -4,15 +4,20 @@ import Link from "next/link";
 
 import { useDetectPath } from "@/shared/helpers/paths";
 
-import { makeClassname, Modal } from "@/shared/components";
+import { makeClassname, Modal, useModal } from "@/shared/components";
 
 import "./index.css";
+import dynamic from "next/dynamic";
 
 const LINKS = [
   { label: "Главная", to: "/" },
   { label: "О нас", to: "/about-us" },
   { label: "Контакты", to: "/#contacts" },
 ];
+
+const RequestCallbackModal = dynamic(
+  () => import("@/features/request-callback-modal")
+);
 
 export default function Header(): JSX.Element {
   const detect = useDetectPath();
@@ -41,11 +46,13 @@ export default function Header(): JSX.Element {
           +7 (999) 999 99-99
         </a>
 
-        <span className="header-callback-link underline">
-          Запрос на обратный звонок
-        </span>
-
-        <Modal />
+        <RequestCallbackModal
+          Button={({ open }) => (
+            <span className="header-callback-link underline" onClick={open}>
+              Запрос на обратный звонок
+            </span>
+          )}
+        />
       </div>
     </header>
   );

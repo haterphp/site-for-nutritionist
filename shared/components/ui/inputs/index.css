@@ -4,7 +4,7 @@
 
 .input-container {
     @apply relative
-    border-2 border-slate-300 rounded-lg
+    border-2 border-slate-300 rounded
     transition-colors
     overflow-hidden;
 }

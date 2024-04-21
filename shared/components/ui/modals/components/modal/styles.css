@@ -2,5 +2,10 @@
   @apply fixed z-[100]
   w-full h-screen
   bg-black/50
-  top-0 left-0;
+  top-0 left-0
+  pt-[150px];
+}
+
+.modal-dialog {
+  @apply bg-white w-full max-w-[550px] mx-auto p-[40px] rounded;
 }
