@@ -14,9 +14,10 @@ export const UserStoreProvider: FC<PropsWithChildren> = ({children}) => {
         storeRef.current = userStore
     }
 
-    useEffect(() => {
-        setTimeout(userStore.getState().setUser, 1000, { login: '123', name: '123' })
-    }, [])
+    // TODO: Add setting user from server
+    // useEffect(() => {
+    //     setTimeout(userStore.getState().setUser, 1000, { login: '123', name: '123' })
+    // }, [])
 
     return (
         <UserStoreContext.Provider value={storeRef.current}>

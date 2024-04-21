@@ -1,0 +1,35 @@
+.header {
+    @apply py-5 border-b-2 flex justify-between items-center;
+}
+
+.header-title {
+    @apply text-xl uppercase font-serif font-medium w-[200px];
+}
+
+.header-callback-container {
+    @apply flex flex-col items-end gap-1 w-[200px];
+}
+
+.header-callback-container > * {
+    @apply text-sm;
+}
+
+.header-callback-link {
+    @apply cursor-pointer hover:opacity-80 transition-colors;
+}
+
+.header-links {
+    @apply flex gap-10;
+}
+
+.header-link {
+    @apply transition-colors text-primary-main relative;
+}
+
+.header-link--active::after {
+    @apply bg-primary-main w-full h-[2px] absolute;
+
+    content: "";
+    left: 0;
+    bottom: -2px;
+}
