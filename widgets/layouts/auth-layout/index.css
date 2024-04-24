@@ -1,0 +1,15 @@
+.auth-layout {
+  @apply flex flex-col items-center max-w-[450px] mx-auto;
+}
+
+.auth-layout-title {
+  @apply text-4xl font-medium font-serif mb-10;
+}
+
+.auth-layout-form {
+  @apply w-full;
+}
+
+.auth-layout-footer {
+  @apply mt-3;
+}

@@ -3,11 +3,11 @@
 }
 
 .modal-title-text {
-  @apply w-full max-w-[80%] text-2xl font-medium;
+  @apply w-full max-w-[90%] text-3xl font-medium font-serif;
 }
 
 .modal-title-button {
-  @apply cursor-pointer p-1 h-[32px] w-[32px];
+  @apply cursor-pointer p-1 h-[36px] w-[36px];
 }
 
 .modal-title-button svg {

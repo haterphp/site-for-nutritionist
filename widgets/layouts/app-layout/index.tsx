@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 
 import { PropsWithChildren } from "react";
 
-const Header = dynamic(() => import('../app-header'))
+const Header = dynamic(() => import('@/features/app-header'))
 
 interface ILayoutProps extends PropsWithChildren {}
 
