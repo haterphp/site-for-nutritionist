@@ -84,8 +84,8 @@ const InputRenderFunction = (
         </label>
 
         <input
-          {...handlers}
           {...rest}
+          {...handlers}
           ref={mergeRefs(ref, innerRef)}
           id={innerId}
           className={"input-element"}

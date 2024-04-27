@@ -11,8 +11,6 @@ const usePortal = (content: ReactNode): ReactNode => {
     useEffect(() => {
         if (window !== undefined) ref.current = document.getElementById('portal')
     }, [])
-
-    console.log(mounted, ref.current)
         
     return isReadyToRender
         ? createPortal(content, ref.current as HTMLElement)

@@ -2,7 +2,7 @@
 
 import { createContext, FC, PropsWithChildren, useContext, useEffect, useRef } from "react";
 import { StoreApi, useStore } from "zustand";
-import { UserStore } from "../interfaces";
+import { UserStore } from "../interfaces/store";
 import { userStore } from "../store";
 
 const UserStoreContext = createContext<StoreApi<UserStore> | null>(null)
@@ -32,7 +32,7 @@ export const useUserStore = <T,>(
     const userStoreContext = useContext(UserStoreContext)
   
     if (!userStoreContext) {
-      throw new Error(`useCounterStore must be use within CounterStoreProvider`)
+      throw new Error(`useUserStore must be use within UserStoreProvider`)
     }
   
     return useStore(userStoreContext, selector)

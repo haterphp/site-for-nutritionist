@@ -16,7 +16,7 @@ const LINKS = [
 ];
 
 const RequestCallbackModal = dynamic(
-  () => import("@/features/request-callback-modal")
+  () => import("@/features/modals/request-callback-modal")
 );
 
 export default function Header(): JSX.Element {

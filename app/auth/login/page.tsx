@@ -1,18 +1,36 @@
 'use client';
 
+import { useLoginRequest } from "@/entities/user/requests";
 import { Button, Input } from "@/shared/components";
+import { useRegisterField } from "@/shared/helpers/forms";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 const AuthLayout = dynamic(() => import("@/widgets/layouts/auth-layout"));
 
-export default function LoginPage() {
+const LoginPageFooter = (): JSX.Element => {
     return (
-        <AuthLayout title="Авторизация" >
-            <Input label={"Почта"} />
-            
-            <Input label={"Пароль"} />
+        <div className="flex flex-col gap-1">
+            <Link href={'/auth/sign-up'} className="link">Создать аккаунт</Link>
+        </div>
+    )
+}
 
-            <Button className="w-full">Войти</Button>
+export default function LoginPage() {
+    const { form, onSubmit } = useLoginRequest()
+    const register = useRegisterField(form)
+
+    return (
+        <AuthLayout
+            title="Авторизация"
+            Footer={<LoginPageFooter />}
+            onSubmit={form.handleSubmit(onSubmit)}
+        >
+            <Input label={"Почта"} {...register('email')} />
+            
+            <Input type="password" label={"Пароль"}  {...register('password')} />
+
+            <Button type="submit" className="w-full">Войти</Button>
         </AuthLayout>
     )
 }

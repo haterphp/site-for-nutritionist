@@ -1,5 +1,5 @@
-.auth-layout {
-  @apply flex flex-col items-center max-w-[450px] mx-auto;
+.auth-layout-content {
+  @apply flex flex-col items-center;
 }
 
 .auth-layout-title {
@@ -7,7 +7,7 @@
 }
 
 .auth-layout-form {
-  @apply w-full;
+  @apply w-full flex flex-col gap-1;
 }
 
 .auth-layout-footer {
