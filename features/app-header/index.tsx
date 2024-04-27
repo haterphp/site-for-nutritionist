@@ -4,15 +4,16 @@ import Link from "next/link";
 
 import { useDetectPath } from "@/shared/helpers/paths";
 
-import { makeClassname, Modal, useModal } from "@/shared/components";
+import { Button, makeClassname, Modal, useModal } from "@/shared/components";
 
 import "./index.css";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 
 const LINKS = [
   { label: "Главная", to: "/" },
   { label: "О нас", to: "/about-us" },
-  { label: "Контакты", to: "/#contacts" },
+  { label: "Каталог", to: "/catalog" },
 ];
 
 const RequestCallbackModal = dynamic(
@@ -21,6 +22,11 @@ const RequestCallbackModal = dynamic(
 
 export default function Header(): JSX.Element {
   const detect = useDetectPath();
+  const router = useRouter()
+
+  const handleOnRedirect = (): void => {
+    router.push('/auth/login')
+  }
 
   return (
     <header className="header">
@@ -41,19 +47,24 @@ export default function Header(): JSX.Element {
         ))}
       </div>
 
-      <div className="header-callback-container">
-        <a className="header-callback-link" href="tel:+79999999999">
-          +7 (999) 999 99-99
-        </a>
+        <div className="header-left-content">
+          <div className="header-callback-container">
+            <a className="header-callback-link" href="tel:+79999999999">
+              +7 (999) 999 99-99
+            </a>
 
-        <RequestCallbackModal
-          Button={({ open }) => (
-            <span className="header-callback-link underline" onClick={open}>
-              Запрос на обратный звонок
-            </span>
-          )}
-        />
-      </div>
+            <RequestCallbackModal
+              Button={({ open }) => (
+                <span className="header-callback-link underline" onClick={open}>
+                  Запрос на обратный звонок
+                </span>
+              )}
+            />
+          </div>
+
+          <Button color="secondary" className="min-w-[100px]" onClick={handleOnRedirect}>Войти</Button>
+        </div>
+
     </header>
   );
 }
