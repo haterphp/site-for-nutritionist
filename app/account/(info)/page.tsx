@@ -5,7 +5,7 @@ import { Button, Input } from "@/shared/components";
 export default function EditAccountInfoPage(): JSX.Element {
     return (
         <>
-            <h1 className="account-title">Личные данные</h1>
+            <h1 data-title>Личные данные</h1>
 
             <form className="max-w-[450px]">
                 <Input label={'ФИО'} />

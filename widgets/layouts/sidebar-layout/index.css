@@ -1,0 +1,16 @@
+.layout-with-sidebar {
+  @apply gap-10 grid grid-cols-1 md:grid-cols-sidebar items-start;
+}
+
+.layout-with-sidebar-content {
+  @apply flex flex-col gap-5;
+}
+
+h1[data-title],
+h2[data-title],
+h3[data-title],
+h4[data-title],
+h5[data-title],
+h6[data-title] {
+  @apply text-3xl font-serif;
+}
