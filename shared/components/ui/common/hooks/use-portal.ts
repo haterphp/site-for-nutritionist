@@ -1,3 +1,5 @@
+'use client'
+
 import { ReactNode, useEffect, useMemo, useRef } from "react"
 import { createPortal } from "react-dom"
 import { useMounted } from "./use-mounted"

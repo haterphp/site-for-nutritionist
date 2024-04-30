@@ -14,7 +14,7 @@ export default function Layout(props: ILayoutProps) {
         <div className="container mx-auto px-2">
             <Header />
 
-            <div className="pt-5">
+            <div className="py-10">
                 {children}
             </div>
         </div>

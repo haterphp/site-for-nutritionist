@@ -11,7 +11,7 @@ const AuthLayout = dynamic(() => import("@/widgets/layouts/auth-layout"));
 const LoginPageFooter = (): JSX.Element => {
     return (
         <div className="flex flex-col gap-1">
-            <Link href={'/auth/sign-up'} className="link">Создать аккаунт</Link>
+            <Link href={'/sign-up'} className="link">Создать аккаунт</Link>
         </div>
     )
 }

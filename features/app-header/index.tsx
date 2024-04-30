@@ -25,7 +25,7 @@ export default function Header(): JSX.Element {
   const router = useRouter()
 
   const handleOnRedirect = (): void => {
-    router.push('/auth/login')
+    router.push('/login')
   }
 
   return (

@@ -14,7 +14,9 @@ interface IInputProps extends Omit<ICommonHTMLProps, 'children'>, ICommonHTMLEve
     type?: HTMLInputElement['type']
     name?: string
     placeholder?: string
-    
+    value?: string
+
+    isDisabled?: boolean
     isError?: boolean
     isHideFeeback?: boolean
 }

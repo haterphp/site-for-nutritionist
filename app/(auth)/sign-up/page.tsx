@@ -11,7 +11,7 @@ const AuthLayout = dynamic(() => import("@/widgets/layouts/auth-layout"));
 const SingUpPageFooter = (): JSX.Element => {
     return (
         <div className="flex flex-col gap-1">
-            <Link href={'/auth/login'} className="link">Войти в систему</Link>
+            <Link href={'/login'} className="link">Войти в систему</Link>
         </div>
     )
 }

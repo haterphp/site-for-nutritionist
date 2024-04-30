@@ -1,0 +1,15 @@
+.sidebar {
+  @apply p-3 bg-gray-50/50
+  border border-secondary-main/10 rounded
+  flex flex-col gap-2 sticky top-10;
+}
+
+.sidebar-item {
+  @apply cursor-pointer p-3 rounded
+  hover:bg-secondary-main/10 active:bg-secondary-main/20 transition-colors
+  flex gap-2 items-center;
+}
+
+.sidebar-item--active {
+  @apply bg-secondary-main/20;
+}

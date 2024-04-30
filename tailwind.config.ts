@@ -21,6 +21,9 @@ const config: Config = {
           main: "#424242",
           dark: "#272324"
         },
+      },
+      gridTemplateColumns: {
+        account: '350px 1fr'
       }
     },
   },

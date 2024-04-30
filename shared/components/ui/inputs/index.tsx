@@ -6,7 +6,6 @@ import {
   ForwardedRef,
   forwardRef,
   useCallback,
-  useEffect,
   useMemo,
   useRef,
   useState,
@@ -30,13 +29,15 @@ const InputRenderFunction = (
     feedback,
     className,
     placeholder,
+    value,
     isError = false,
     isHideFeeback = false,
+    isDisabled = false,
     ...rest
   } = props;
 
   const [isFocus, setIsFocus] = useState(false);
-  const [isDirty, setIsDirty] = useState(false);
+  const [isDirty, setIsDirty] = useState(!!value);
 
   const innerRef = useRef<HTMLInputElement>(null);
 
@@ -70,6 +71,7 @@ const InputRenderFunction = (
         "input",
         isError && "input--error",
         isFocus && "input--focus",
+        isDisabled && "input--disabled",
         className
       )}
     >
@@ -88,7 +90,9 @@ const InputRenderFunction = (
           {...handlers}
           ref={mergeRefs(ref, innerRef)}
           id={innerId}
+          value={value}
           className={"input-element"}
+          disabled={isDisabled}
           placeholder={isFocus ? placeholder : undefined}
         />
       </div>

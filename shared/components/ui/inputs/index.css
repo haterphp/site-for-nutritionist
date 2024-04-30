@@ -1,47 +1,57 @@
 .input {
-    @apply flex flex-col gap-[2px];
+  @apply flex flex-col gap-[2px];
 }
 
 .input-container {
-    @apply relative
+  @apply relative
     border-2 border-slate-300 rounded
     transition-colors
     overflow-hidden;
 }
 
 .input-element {
-    @apply w-full outline-none pt-[23px] p-2;
+  @apply w-full outline-none pt-[23px] p-2;
 }
 
 .input-label {
-    @apply absolute pl-2 top-[15px] transition-all;
+  @apply absolute pl-2 top-[15px] transition-all;
 }
 
 .input-feedback {
-    @apply text-sm h-[20px] pl-2 transition-colors;
+  @apply text-sm h-[20px] pl-2 transition-colors;
 }
 
 /* Focus state */
 
-.input.input--focus .input-container{
-    @apply border-primary-main/50;
+.input.input--focus .input-container {
+  @apply border-primary-main/50;
 }
 
 .input.input--focus .input-label {
-    @apply text-primary-main;
+  @apply text-primary-main;
 }
 
 .input.input--focus .input-label,
 .input-label.input-label--focus {
-    @apply -translate-y-2 text-xs;
+  @apply -translate-y-2 text-xs;
 }
 
 /* Error state */
-.input.input--error .input-container{
-    @apply border-red-400;
+.input.input--error .input-container {
+  @apply border-red-400;
 }
 
 .input.input--error .input-label,
-.input.input--error .input-feedback{
-    @apply text-red-400;
+.input.input--error .input-feedback {
+  @apply text-red-400;
+}
+
+/* Disabled state */
+.input.input--disabled .input-container {
+  @apply bg-gray-200 cursor-not-allowed;
+}
+
+.input.input--disabled .input-element,
+.input.input--disabled .input-label {
+  @apply cursor-not-allowed;
 }
