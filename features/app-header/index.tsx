@@ -12,8 +12,9 @@ import { useRouter } from "next/navigation";
 
 const LINKS = [
   { label: "Главная", to: "/" },
-  { label: "О нас", to: "/about-us" },
+  { label: "Обо мне", to: "/about-me" },
   { label: "Каталог", to: "/catalog" },
+  { label: "Статьи", to: "/articles" },
 ];
 
 const RequestCallbackModal = dynamic(
@@ -30,7 +31,13 @@ export default function Header(): JSX.Element {
 
   return (
     <header className="header">
-      <h2 className="header-title">Lorem, ipsum</h2>
+      <h2 className="header-title">
+        <span className="block w-[150px]" style={{ letterSpacing: '0.03rem' }}>Нутрициолог</span>
+        
+        <span>
+          Мария <span className="text-primary-main">Коляда</span>
+        </span>
+      </h2>
 
       <div className="header-links">
         {LINKS.map(({ label, to }) => (

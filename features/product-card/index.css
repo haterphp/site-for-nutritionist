@@ -1,0 +1,27 @@
+.card {
+  @apply relative cursor-pointer p-2 transition-shadow rounded;
+}
+
+.card:hover {
+  @apply shadow-md;
+}
+
+.card:hover .card-image {
+  filter: brightness(0.9);
+}
+
+.card-image {
+  @apply object-cover rounded !h-[250px] !relative overflow-hidden transition-all;
+}
+
+.card-title {
+  @apply text-lg font-semibold mt-3;
+}
+
+.card-description {
+  @apply text-slate-400 text-[14px] mb-1;
+}
+
+.card-price {
+  @apply mb-3;
+}

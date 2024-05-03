@@ -1,0 +1,13 @@
+.navbar {
+  @apply p-0 flex flex-col sticky top-10 overflow-hidden;
+}
+
+.navbar-item {
+  @apply cursor-pointer px-3 py-5
+  hover:bg-primary-main/20 active:bg-primary-main/30 transition-colors
+  flex gap-2 items-center;
+}
+
+.navbar-item--active {
+  @apply !bg-primary-main !text-white;
+}

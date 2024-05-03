@@ -6,4 +6,8 @@
   .link {
     @apply text-primary-main hover:text-primary-dark cursor-pointer transition-colors;
   }
+
+  .paper {
+    @apply p-3 border-2 border-slate-100 rounded;
+  }
 }

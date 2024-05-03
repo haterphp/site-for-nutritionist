@@ -1,0 +1,37 @@
+.accordion {
+  @apply p-0;
+}
+
+.accordion-header {
+  @apply px-3 py-5 flex justify-between items-center cursor-pointer hover:bg-primary-main/30 active:bg-primary-main/20 transition-colors rounded;
+}
+
+.accordion-header-label {
+  @apply font-semibold;
+}
+
+.accordion-header-icon {
+  @apply w-[15px] h-[15px];
+  transition: transform 0.25s ease;
+}
+
+.accordion-header-icon svg {
+  @apply fill-primary-main;
+}
+
+.accordion--open .accordion-header-icon {
+  @apply rotate-180;
+}
+
+.accordion-content {
+  @apply overflow-hidden max-h-0;
+  transition: max-height 0.25s ease;
+}
+
+.accordion--open .accordion-content {
+  @apply overflow-auto max-h-[10rem];
+}
+
+.accordion-inner-content {
+  @apply p-3;
+}

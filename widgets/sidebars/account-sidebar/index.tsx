@@ -1,12 +1,9 @@
 'use client'
 
-import { ISidebarItem } from "@/features/sidebar"
+import { INavbarItem, Navbar } from "@/shared/components/tools"
 import { useDetectPath } from "@/shared/helpers/paths"
-import dynamic from "next/dynamic"
 import { useRouter } from "next/navigation"
 import { useCallback, useMemo } from "react"
-
-const Sidebar = dynamic(() => import('@/features/sidebar'))
 
 export default function AccountSidebar(): JSX.Element {
     const router = useRouter()
@@ -16,13 +13,11 @@ export default function AccountSidebar(): JSX.Element {
         router.push(url)
     }, [router])
 
-    const sidebarItems = useMemo<ISidebarItem[]>(() => [
+    const items = useMemo<INavbarItem[]>(() => [
         { id: '/account', label: 'Личные данные', isActive: detect, onClick: handleOnClick },
         { id: '/account/favorite', label: 'Избранное', isActive: detect, onClick: handleOnClick },
         { id: '/account/orders', label: 'Заказы', isActive: detect, onClick: handleOnClick },
     ], [handleOnClick, detect])
     
-    return (
-        <Sidebar items={sidebarItems} />
-    )
+    return <Navbar items={items} />
 }
