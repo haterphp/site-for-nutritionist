@@ -19,7 +19,7 @@ export class CatalogRepository implements ICatalogRepository {
             price: Math.floor(Math.random() * (10000 - 1000) + 1000),
             title,
             description,
-            url: "https://media.istockphoto.com/id/1457433817/photo/group-of-healthy-food-for-flexitarian-diet.webp?b=1&s=170667a&w=0&k=20&c=RKgGJW8aIINIPpisynZ2x6UWFiMZ0afmEN32gmbYvVI="
+            url: "https://placehold.co/250/png"
         }
     }
 }

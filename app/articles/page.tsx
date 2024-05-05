@@ -2,30 +2,36 @@
 
 import { useEffect } from 'react'
 
-import { useArticleStore } from '@/entities/articles'
+import { IArticleEntity, useArticleStore } from '@/entities/articles'
 
 import { CardsGridTemplate } from '@/widgets/layouts/cards-grid'
 
 import { ArticleCard } from '@/features/article-card'
 
-import './index.css'
+import { useRouter } from 'next/navigation'
+import { PageHeader } from '@/features/page-header'
 
 export default function ArticlePage(): JSX.Element {
+    const router = useRouter()
+    
     const { data, load } = useArticleStore((state) => ({
         data: state.cards,
         load: state.loadCards
     }))
+
+    const handleOnClick = (_: unknown, item: IArticleEntity): void => {
+        router.push(`/articles/${item.id}`)
+    }
 
     useEffect(() => {
         load()
     }, [load])
 
     return (
-        <div className='articles-page'>
-            <h1 className="articles-title">Статьи</h1>
+        <div className='flex flex-col gap-5'>
+            <PageHeader title='Статьи' />
 
-
-            <CardsGridTemplate items={data} CardFactory={ArticleCard} />
+            <CardsGridTemplate items={data} CardFactory={ArticleCard} onClick={handleOnClick} />
         </div>
     )
 }

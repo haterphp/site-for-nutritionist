@@ -23,7 +23,8 @@ const config: Config = {
         },
       },
       gridTemplateColumns: {
-        sidebar: '300px 1fr'
+        sidebar: '300px 1fr',
+        "sidebar-reverse": '1fr 300px',
       }
     },
   },

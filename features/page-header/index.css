@@ -1,0 +1,17 @@
+.page-header {
+  @apply flex flex-col items-start gap-5;
+}
+
+.page-header-content {
+  @apply flex items-center justify-between;
+}
+
+.page-header-title {
+  @apply text-3xl font-serif;
+}
+
+.page-header-button {
+  @apply py-2 pl-2 pr-5 border border-transparent 
+  hover:border-secondary-main active:bg-secondary-main/10
+  rounded transition-colors flex gap-2 items-center;
+}

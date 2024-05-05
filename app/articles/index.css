@@ -1,7 +1,0 @@
-.articles-page {
-  @apply flex flex-col gap-5;
-}
-
-.articles-title {
-  @apply text-3xl font-serif;
-}

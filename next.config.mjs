@@ -5,12 +5,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "media.istockphoto.com",
-        port: "",
-      },
-      {
-        protocol: "https",
-        hostname: "images.ctfassets.net",
+        hostname: "placehold.co",
         port: "",
       },
     ],

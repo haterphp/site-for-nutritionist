@@ -1,0 +1,24 @@
+.article-card {
+  @apply p-2 flex flex-col items-center;
+}
+
+.article-card:hover .article-image {
+  filter: brightness(0.9);
+}
+
+.article-title {
+  @apply text-xl pt-3 font-semibold;
+}
+
+.article-description {
+  @apply text-slate-400 mb-3 text-[14px] w-full text-center;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.article-image {
+  @apply object-cover rounded !h-[250px] !relative overflow-hidden transition-all;
+}
