@@ -22,7 +22,7 @@ export default function LoginPage() {
 
     return (
         <AuthLayout
-            title="Авторизация"
+            title="Вход в аккаунт"
             Footer={<LoginPageFooter />}
             onSubmit={form.handleSubmit(onSubmit)}
         >

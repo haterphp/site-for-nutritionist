@@ -1,7 +1,7 @@
 'use client'
 
 import { ICatalogEntity, useCatalogStore } from '@/entities/catalog'
-import { Card } from '@/features/product-card'
+import { Card } from '@/features/cards/product-card'
 import { CardsGridTemplate } from '@/widgets/layouts/cards-grid'
 
 import dynamic from 'next/dynamic'

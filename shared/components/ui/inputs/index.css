@@ -10,7 +10,7 @@
 }
 
 .input-element {
-  @apply w-full outline-none pt-[23px] p-2;
+  @apply w-full outline-none pt-[23px] p-2 resize-none;
 }
 
 .input-label {

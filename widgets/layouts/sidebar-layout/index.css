@@ -1,9 +1,9 @@
 .layout-with-sidebar {
-  @apply gap-10 grid grid-cols-1 md:grid-cols-sidebar items-start;
+  @apply gap-10 grid lg:grid-cols-sidebar grid-cols-1 items-start;
 }
 
 .layout-with-sidebar--reverse {
-  @apply md:grid-cols-sidebar-reverse;
+  @apply lg:grid-cols-sidebar-reverse;
 }
 
 .layout-with-sidebar-content {

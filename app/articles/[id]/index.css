@@ -1,0 +1,7 @@
+.article-page {
+  /* @apply !grid-cols-[1fr_400px]; */
+}
+
+.article-page-image {
+  @apply !relative !w-full !h-[450px] object-cover rounded;
+}

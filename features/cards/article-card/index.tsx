@@ -1,12 +1,16 @@
 'use client'
 
 import Image from "next/image";
+
 import { MouseEventHandler, useMemo } from "react";
+
 import { IArticleEntity } from "@/entities/articles";
+
 import { Button } from "@/shared/components";
 
-import './index.css'
 import { useCardsContext } from "@/widgets/layouts/cards-grid/context";
+
+import './index.css'
 
 export function ArticleCard(props: IArticleEntity) {
     const { id, content, url, title } = props

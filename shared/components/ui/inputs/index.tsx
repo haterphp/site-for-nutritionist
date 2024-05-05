@@ -5,6 +5,7 @@ import {
   FocusEvent,
   ForwardedRef,
   forwardRef,
+  Ref,
   useCallback,
   useMemo,
   useRef,
@@ -21,7 +22,7 @@ import "./index.css";
 
 const InputRenderFunction = (
   props: IInputProps,
-  ref: ForwardedRef<HTMLInputElement>
+  ref: ForwardedRef<HTMLInputElement | HTMLTextAreaElement>
 ): JSX.Element => {
   const {
     id,
@@ -30,16 +31,18 @@ const InputRenderFunction = (
     className,
     placeholder,
     value,
+    type = 'text',
     isError = false,
     isHideFeeback = false,
     isDisabled = false,
+    rows = 5,
     ...rest
   } = props;
 
   const [isFocus, setIsFocus] = useState(false);
   const [isDirty, setIsDirty] = useState(!!value);
 
-  const innerRef = useRef<HTMLInputElement>(null);
+  const innerRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
 
   const innerId = useMemo(
     () => id ?? `input-element#${Math.random().toString()}`,
@@ -50,8 +53,8 @@ const InputRenderFunction = (
     if (innerRef.current !== null && !isFocus) innerRef.current.focus();
   }, [isFocus]);
 
-  const handlers = {
-    onChange: (e: ChangeEvent<HTMLInputElement>) => {
+  const handlers = useMemo(() => ({
+    onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       setIsDirty(e.currentTarget.value !== "");
       rest.onChange?.(e);
     },
@@ -63,7 +66,38 @@ const InputRenderFunction = (
       setIsFocus(false);
       rest.onBlur?.(e);
     },
-  };
+  }), [rest, setIsFocus, setIsDirty]);
+
+  const InputComponent = useMemo(() => {
+    if (type === 'textarea') return (
+        <textarea
+          {...rest}
+          {...handlers}
+          ref={mergeRefs(ref, innerRef) as Ref<HTMLTextAreaElement>}
+          id={innerId}
+          className={"input-element"}
+          disabled={isDisabled}
+          placeholder={isFocus ? placeholder : undefined}
+          rows={rows}
+        >
+          {value}
+        </textarea>
+    )
+
+    return (
+      <input
+        {...rest}
+        {...handlers}
+        type={type}
+        ref={mergeRefs(ref, innerRef)  as Ref<HTMLInputElement>}
+        id={innerId}
+        value={value}
+        className={"input-element"}
+        disabled={isDisabled}
+        placeholder={isFocus ? placeholder : undefined}
+      />
+    )
+  }, [type, rest, handlers, value, isFocus, placeholder, innerId, ref, innerRef, isDisabled, rows])
 
   return (
     <div
@@ -85,16 +119,7 @@ const InputRenderFunction = (
           {label}
         </label>
 
-        <input
-          {...rest}
-          {...handlers}
-          ref={mergeRefs(ref, innerRef)}
-          id={innerId}
-          value={value}
-          className={"input-element"}
-          disabled={isDisabled}
-          placeholder={isFocus ? placeholder : undefined}
-        />
+        {InputComponent}
       </div>
 
       {isHideFeeback === false && (

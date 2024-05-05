@@ -6,7 +6,7 @@ import { IArticleEntity, useArticleStore } from '@/entities/articles'
 
 import { CardsGridTemplate } from '@/widgets/layouts/cards-grid'
 
-import { ArticleCard } from '@/features/article-card'
+import { ArticleCard } from '@/features/cards/article-card'
 
 import { useRouter } from 'next/navigation'
 import { PageHeader } from '@/features/page-header'

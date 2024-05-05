@@ -1,0 +1,11 @@
+.comments-list {
+  @apply sticky top-5 flex flex-col gap-5;
+}
+
+.comments-list-title {
+  @apply text-2xl font-serif;
+}
+
+.comments-list-content {
+  @apply flex flex-col gap-2;
+}

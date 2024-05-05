@@ -1,0 +1,7 @@
+.article-sidebar {
+  @apply flex flex-col gap-5;
+}
+
+.article-sidebar-title {
+  @apply font-serif text-2xl;
+}

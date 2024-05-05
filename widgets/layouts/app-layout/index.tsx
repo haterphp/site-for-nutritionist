@@ -11,7 +11,7 @@ export default function Layout(props: ILayoutProps) {
     const { children } = props
 
     return (
-        <div className="container mx-auto px-2 min-h-screen">
+        <div className="container mx-auto px-5 min-h-screen">
             <Header />
 
             <div className="py-10">

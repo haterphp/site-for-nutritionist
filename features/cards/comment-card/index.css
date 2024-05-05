@@ -1,0 +1,15 @@
+.comment {
+  @apply w-full p-5 rounded border-2 border-slate-100 flex gap-3 items-start;
+}
+
+.comment-title {
+  @apply font-semibold;
+}
+
+.comment-description {
+  @apply text-[14px];
+}
+
+.comment-avatar {
+  @apply min-w-[50px] h-[50px] rounded-full bg-slate-100 uppercase text-[20px] flex items-center justify-center;
+}
