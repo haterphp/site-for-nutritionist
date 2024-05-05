@@ -1,11 +1,12 @@
 'use client'
 
+import { PageHeader } from "@/features/page-header";
 import { Button, Input } from "@/shared/components";
 
 export default function EditAccountInfoPage(): JSX.Element {
     return (
         <>
-            <h1 data-title>Личные данные</h1>
+            <PageHeader title='Личные данные' />
 
             <form className="max-w-[450px]">
                 <Input label={'ФИО'} />

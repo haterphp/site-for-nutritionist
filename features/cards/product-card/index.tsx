@@ -5,10 +5,10 @@ import { useMemo } from "react"
 
 import { ICatalogEntity } from "@/entities/catalog"
 
-import './index.css'
 import { Button } from "@/shared/components"
+import './index.css'
 
-export function Card(props: ICatalogEntity): JSX.Element {
+export function ProductCard(props: ICatalogEntity): JSX.Element {
     const { id, url, title, description, price } = props
 
     const formattedPrice = useMemo(() => {
@@ -16,19 +16,19 @@ export function Card(props: ICatalogEntity): JSX.Element {
     }, [price])
 
     return (
-        <article className="card">
+        <article className="product-card">
             <Image
-                className="card-image"
+                className="product-card-image"
                 src={url}
                 alt={title}
                 fill
             />
 
-            <h3 className="card-title">{title}</h3>
+            <h3 className="product-card-title">{title}</h3>
 
-            <p className="card-description">{description}</p>
+            <p className="product-card-description">{description}</p>
 
-            <p className="card-price">{formattedPrice}</p>
+            <p className="product-card-price">{formattedPrice}</p>
 
             <Button className="w-full">
                 Добавить в корзину

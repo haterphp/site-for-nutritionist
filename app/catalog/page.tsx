@@ -1,7 +1,8 @@
 'use client'
 
 import { ICatalogEntity, useCatalogStore } from '@/entities/catalog'
-import { Card } from '@/features/cards/product-card'
+import { ProductCard } from '@/features/cards/product-card'
+import { PageHeader } from '@/features/page-header'
 import { CardsGridTemplate } from '@/widgets/layouts/cards-grid'
 
 import dynamic from 'next/dynamic'
@@ -26,9 +27,9 @@ export default function CatalogPage() {
 
     return (
         <LayoutWithSidebar Sidebar={<CatalogFilter />}>
-            <h1 data-title>Каталог</h1>
+            <PageHeader title='Каталог' />
 
-            <CardsGridTemplate<ICatalogEntity> items={data} CardFactory={Card}/>
+            <CardsGridTemplate<ICatalogEntity> items={data} CardFactory={ProductCard}/>
         </LayoutWithSidebar>
     )
 }

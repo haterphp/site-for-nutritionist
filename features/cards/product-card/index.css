@@ -1,27 +1,27 @@
-.card {
+.product-card {
   @apply relative cursor-pointer p-2 transition-shadow rounded;
 }
 
-.card:hover {
+.product-card:hover {
   @apply shadow-md;
 }
 
-.card:hover .card-image {
+.product-card:hover .product-card-image {
   filter: brightness(0.9);
 }
 
-.card-image {
+.product-card-image {
   @apply object-cover rounded !h-[250px] !relative overflow-hidden transition-all;
 }
 
-.card-title {
+.product-card-title {
   @apply text-lg font-semibold mt-3;
 }
 
-.card-description {
+.product-card-description {
   @apply text-slate-400 text-[14px] mb-1;
 }
 
-.card-price {
+.product-card-price {
   @apply mb-3;
 }
