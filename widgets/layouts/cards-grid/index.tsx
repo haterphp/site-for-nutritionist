@@ -1,4 +1,4 @@
-import { FC, MouseEvent, useMemo } from 'react'
+import { FC, MouseEvent, ReactNode, useMemo } from 'react'
 
 import { ICommonHTMLProps } from '@/shared/components/ui/common/interfaces'
 
@@ -14,13 +14,14 @@ export interface ICardCommonItem {
 interface ICardsGridProps<TCardItem extends ICardCommonItem> extends Omit<ICommonHTMLProps, 'children'> {
     items: TCardItem[]
     CardFactory: FC<TCardItem>
+    context?: Record<string, number | string | ReactNode | boolean | Function>
     onClick?: (e: MouseEvent, item: TCardItem) => void
 }
 
 export function CardsGridTemplate<TCardItem extends ICardCommonItem>(props: ICardsGridProps<TCardItem>) {
-    const { items, className, CardFactory, onClick, ...rest } = props
+    const { items, className, CardFactory, onClick, context: externalContext, ...rest } = props
 
-    const context = useMemo(() => ({ onClick }), [onClick])
+    const context = useMemo(() => ({ onClick, ...externalContext }), [onClick, externalContext])
 
     return (
         <div className={makeClassname("cards-grid", className)} {...rest}>

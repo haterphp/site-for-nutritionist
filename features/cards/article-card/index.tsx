@@ -13,7 +13,7 @@ import { useCardsContext } from "@/widgets/layouts/cards-grid/context";
 import './index.css'
 
 export function ArticleCard(props: IArticleEntity) {
-    const { id, content, url, title } = props
+    const { content, url, title } = props
     
     const { onClick } = useCardsContext()
 

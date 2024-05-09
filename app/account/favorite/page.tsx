@@ -1,16 +1,23 @@
 'use client'
 
-import { useCatalogStore } from "@/entities/catalog"
+import { ICatalogEntity, useCatalogStore } from "@/entities/catalog"
 import { ProductCard } from "@/features/cards/product-card"
 import { PageHeader } from "@/features/page-header"
 import { CardsGridTemplate } from "@/widgets/layouts/cards-grid"
+import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 
 export default function AccountFavoritePage() {
+    const router = useRouter()
+
     const { data, load } = useCatalogStore(state => ({
         data: state.cards,
         load: state.loadCardsByCategory
     }))
+
+    const handleOnClick = (_: unknown, item: ICatalogEntity): void => {
+        router.push(`/catalog/${item.id}`)
+    }
 
     useEffect(() => {
         load()
@@ -20,7 +27,12 @@ export default function AccountFavoritePage() {
         <>
             <PageHeader title='Избранное' />
 
-            <CardsGridTemplate items={data} CardFactory={ProductCard} />    
+            <CardsGridTemplate
+                items={data}
+                CardFactory={ProductCard}
+                context={{ isHideButton: true }}
+                onClick={handleOnClick}
+            />    
         </>
     )
 }

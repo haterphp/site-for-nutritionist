@@ -21,7 +21,3 @@
 .product-card-description {
   @apply text-slate-400 text-[14px] mb-1;
 }
-
-.product-card-price {
-  @apply mb-3;
-}

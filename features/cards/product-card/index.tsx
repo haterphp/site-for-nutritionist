@@ -1,22 +1,34 @@
 'use client'
 
 import Image from "next/image"
-import { useMemo } from "react"
+import { MouseEventHandler, useMemo } from "react"
 
 import { ICatalogEntity } from "@/entities/catalog"
+import { ICardsGridContenxt, useCardsContext } from "@/widgets/layouts/cards-grid/context"
 
 import { Button } from "@/shared/components"
+
 import './index.css'
 
+interface IProductCardsContext extends ICardsGridContenxt {
+    isHideButton: boolean
+}
+
 export function ProductCard(props: ICatalogEntity): JSX.Element {
-    const { id, url, title, description, price } = props
+    const { url, title, description, price } = props
+
+    const { isHideButton, onClick } = useCardsContext<IProductCardsContext>()
 
     const formattedPrice = useMemo(() => {
         return `${price} ₽`
     }, [price])
 
+    const handleOnClick: MouseEventHandler = (e) => {
+        onClick && onClick(e, props)
+    }
+
     return (
-        <article className="product-card">
+        <article className="product-card" onClick={handleOnClick}>
             <Image
                 className="product-card-image"
                 src={url}
@@ -30,9 +42,11 @@ export function ProductCard(props: ICatalogEntity): JSX.Element {
 
             <p className="product-card-price">{formattedPrice}</p>
 
-            <Button className="w-full">
+        { !isHideButton && (
+            <Button className="w-full mt-3">
                 Добавить в корзину
             </Button>
+        )}
         </article>
     )
 }
