@@ -7,7 +7,7 @@
 }
 
 .article-title {
-  @apply text-xl pt-3 font-semibold;
+  @apply text-xl py-3 font-semibold;
 }
 
 .article-description {

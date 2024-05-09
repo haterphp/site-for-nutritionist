@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import { MouseEventHandler, useMemo } from "react";
+import { MouseEventHandler } from "react";
 
 import { IArticleEntity } from "@/entities/articles";
 
@@ -20,8 +20,6 @@ export function ArticleCard(props: IArticleEntity) {
     const handleOnClick: MouseEventHandler = (e) => {
         onClick && onClick(e, props)
     }
-
-    const shortDescription = useMemo(() => content.slice(0, 150), [content])
     
     return (
         <article className="article-card">
@@ -29,7 +27,7 @@ export function ArticleCard(props: IArticleEntity) {
 
             <h2 className="article-title">{title}</h2>
 
-            <p className="article-description">{shortDescription}</p>
+            <p className="article-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, ab autem voluptatum repudiandae adipisci tempora eos ullam ea quis esse nulla voluptas magnam ratione dolores!</p>
 
             <Button color="secondary" onClick={handleOnClick}>Подробнее</Button>
         </article>

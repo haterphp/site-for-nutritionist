@@ -5,6 +5,7 @@ interface IArticleStoreState {
 }
 
 interface IArticleStoreActions {
+    getCardById(id: IArticleEntity['id']): Promise<IArticleEntity>
     loadCards(): Promise<void>
 }
 

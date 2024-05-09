@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode, useMemo } from 'react'
 import { ArrowBack } from '@/shared/assets/icons/arrow-back'
 
 import './index.css'
@@ -7,25 +7,34 @@ import { useRouter } from 'next/navigation'
 interface IPageHeaderProps {
     title: string
 
-    isBackButtonVisible?: boolean
+    BackButton?: { visible?: boolean, url?: string, text?: string }
     Toolbar?: ReactNode
 }
 
 export function PageHeader(props: IPageHeaderProps): JSX.Element {
-    const { title, Toolbar, isBackButtonVisible } = props
+    const { title, Toolbar, BackButton} = props
 
     const router = useRouter()
 
+    const BackButtonProps = useMemo(() => {
+        return {
+            visible: BackButton?.visible ?? false,
+            url: BackButton?.url,
+            text: BackButton?.text ?? 'Назад',
+        }
+    }, [BackButton])
+
     const handleOnClick = (): void => {
-        router.back()
+        if (BackButtonProps.url !== undefined) router.replace(BackButtonProps.url)
+        else router.back()
     }
 
     return (
         <div className='page-header'>
-            { isBackButtonVisible && <button className='page-header-button' onClick={handleOnClick}>
+            { BackButtonProps.visible && <button className='page-header-button' onClick={handleOnClick}>
                 <ArrowBack />
 
-                Назад
+                {BackButtonProps.text}
             </button> }
 
             <div className="page-header-content">
