@@ -44,7 +44,7 @@ export default function CurrentArticlePage(): ReactNode {
 
             <RichText content={content} />
         
-            <CommentsList className="mt-5"/>
+            <CommentsList articleId={article.id} className="mt-5"/>
         </LayoutWithSidebar>
     )
 }

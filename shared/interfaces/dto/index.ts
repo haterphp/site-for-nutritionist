@@ -7,7 +7,7 @@ type Image = {
     }
 }
 
-type StrapiAttributes = Record<string, number | string | RichText | Image>
+type StrapiAttributes = Record<string, any>
 
 interface IResponseItem<TAttributes extends StrapiAttributes = StrapiAttributes>{
     id: number

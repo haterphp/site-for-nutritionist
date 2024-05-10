@@ -1,13 +1,9 @@
+import { ICommentEntity } from '@/entities/comments'
 import './index.css'
 
-export interface ICommentCardProps {
-    id: string
-    user: string
-    content: string
-}
 
-export function CommentCard(props: ICommentCardProps) {
-    const { id, user, content } = props
+export function CommentCard(props: ICommentEntity) {
+    const { user, comment } = props
 
     return (
         <div className="comment">
@@ -17,7 +13,7 @@ export function CommentCard(props: ICommentCardProps) {
 
             <div className="comment-content">
                 <h3 className="comment-title">{user}</h3>
-                <h3 className="comment-description">{content}</h3>
+                <h3 className="comment-description">{comment}</h3>
             </div>
         </div>
     )

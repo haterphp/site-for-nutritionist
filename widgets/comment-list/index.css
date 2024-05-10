@@ -9,3 +9,7 @@
 .comments-list-content {
   @apply flex flex-col gap-2;
 }
+
+.comment-list-empty-content {
+  @apply text-slate-400;
+}

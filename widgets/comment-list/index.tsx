@@ -1,23 +1,39 @@
 import { Button, Input, makeClassname } from "@/shared/components";
 
-import { CommentCard, ICommentCardProps } from "@/features/cards/comment-card";
+import { CommentCard } from "@/features/cards/comment-card";
 
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 
 import './index.css'
 import { ICommonHTMLProps } from "@/shared/components/ui/common/interfaces";
+import { IArticleEntity } from "@/entities/articles";
+import { useCommentsStore } from "@/entities/comments";
 
-export default function CommentSidebar(props: Omit<ICommonHTMLProps, 'children'>) {
+interface ICommentsSidebarProps extends Omit<ICommonHTMLProps, 'children'> {
+    articleId: IArticleEntity['id']
+}
 
-    const comments = useMemo<ICommentCardProps[]>(() => [
-            { id: Math.random().toString(), user: "Default User", content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda, corrupti in inventore reprehenderit enim eius. Blanditiis commodi quo iusto, dolorum omnis impedit enim dignissimos animi.' },
-            { id: Math.random().toString(), user: "Default User", content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda, corrupti in inventore reprehenderit enim eius. Blanditiis commodi quo iusto, dolorum omnis impedit enim dignissimos animi.' },
-            { id: Math.random().toString(), user: "Default User", content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda, corrupti in inventore reprehenderit enim eius. Blanditiis commodi quo iusto, dolorum omnis impedit enim dignissimos animi.' },
-            { id: Math.random().toString(), user: "Default User", content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda, corrupti in inventore reprehenderit enim eius. Blanditiis commodi quo iusto, dolorum omnis impedit enim dignissimos animi.' }
-    ], [])
+export default function CommentSidebar(props: ICommentsSidebarProps) {
+
+    const { articleId, className, id } = props
+
+    const { entities, load, reset } = useCommentsStore((state) => ({
+        entities: state.entities,
+        load: state.loadEntitiesForArticle,
+        reset: state.reset
+    }))
+
+    useEffect(() => {
+        void load(articleId)
+        
+        return () => {
+            reset()
+        } 
+    }, [articleId, load, reset])
+    
 
     return (
-        <div {...props} className={makeClassname("comments-list", props.className)}>
+        <div className={makeClassname("comments-list", className)} id={id}>
             <h2 className="comments-list-title">Комментарии</h2>
 
             <form className="flex flex-col gap-1 items-start">
@@ -32,9 +48,13 @@ export default function CommentSidebar(props: Omit<ICommonHTMLProps, 'children'>
                 <Button>Отправить</Button>
             </form>
 
-            <div className="comments-list-content">
-                { comments.map((item) => <CommentCard key={item.id} {...item} />) }
-            </div>
+            {entities.length > 0 
+                ? (<div className="comments-list-content">
+                        { entities.map((item) => <CommentCard key={item.id} {...item} />) }
+                    </div>) 
+                : (<p className="comment-list-empty-content">Ваш комментарий будет первым...</p>)}
+
+            
         </div>
     )
 }
