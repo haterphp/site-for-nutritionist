@@ -1,10 +1,12 @@
-import { ICatalogEntity } from "../entity"
+import { ICatalogEntity, ICategoryEntity } from "../entity"
 
 interface ICatalogStoreState {
     cards: ICatalogEntity[]
+    categories: ICategoryEntity[]
 }
 
 interface ICatalogStoreActions {
+    loadCategories(): Promise<void>
     loadCardsByCategory(category?: string): Promise<void>
 }
 

@@ -14,14 +14,31 @@ export interface ICardCommonItem {
 interface ICardsGridProps<TCardItem extends ICardCommonItem> extends Omit<ICommonHTMLProps, 'children'> {
     items: TCardItem[]
     CardFactory: FC<TCardItem>
+
+    emptyContentText?: string
     context?: Record<string, number | string | ReactNode | boolean | Function>
+
     onClick?: (e: MouseEvent, item: TCardItem) => void
 }
 
 export function CardsGridTemplate<TCardItem extends ICardCommonItem>(props: ICardsGridProps<TCardItem>) {
-    const { items, className, CardFactory, onClick, context: externalContext, ...rest } = props
+    const {
+        items,
+        className,
+        CardFactory,
+        emptyContentText = 'По данному запросу ничего не найдено',
+        context: externalContext,
+        onClick,
+        ...rest
+    } = props
 
     const context = useMemo(() => ({ onClick, ...externalContext }), [onClick, externalContext])
+
+    if (items.length <= 0) {
+        return (
+            <p className='card-grid-empty-content'>{emptyContentText}</p>
+        )
+    }
 
     return (
         <div className={makeClassname("cards-grid", className)} {...rest}>

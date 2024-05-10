@@ -15,7 +15,7 @@ interface IProductCardsContext extends ICardsGridContenxt {
 }
 
 export function ProductCard(props: ICatalogEntity): JSX.Element {
-    const { url, title, description, price } = props
+    const { images, title, description, price } = props
 
     const { isHideButton, onClick } = useCardsContext<IProductCardsContext>()
 
@@ -31,7 +31,7 @@ export function ProductCard(props: ICatalogEntity): JSX.Element {
         <article className="product-card" onClick={handleOnClick}>
             <Image
                 className="product-card-image"
-                src={url}
+                src={images[0]}
                 alt={title}
                 fill
             />

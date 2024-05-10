@@ -3,7 +3,7 @@ import { Image, IResponseItem, RichText, StrapiAttributes } from "@/shared/inter
 interface Attributes extends StrapiAttributes {
     title: string
     content: RichText
-    image: Image
+    image: { data: Image }
     createdAt: string
 }
 

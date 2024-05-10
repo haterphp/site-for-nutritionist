@@ -4,13 +4,13 @@ import { ICatalogEntity, useCatalogStore } from '@/entities/catalog'
 import { ProductCard } from '@/features/cards/product-card'
 import { PageHeader } from '@/features/page-header'
 import { CardsGridTemplate } from '@/widgets/layouts/cards-grid'
+import LayoutWithSidebar from '@/widgets/layouts/sidebar-layout'
 
 import dynamic from 'next/dynamic'
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
-const LayoutWithSidebar = dynamic(() => import('@/widgets/layouts/sidebar-layout'))
 const CatalogFilter = dynamic(() => import('@/widgets/sidebars/catalog-filters'))
 
 export default function CatalogPage() {
@@ -40,7 +40,7 @@ export default function CatalogPage() {
                 items={data}
                 CardFactory={ProductCard}
                 onClick={handleOnClick}
-            />  
+            />   
         </LayoutWithSidebar>
     )
 }

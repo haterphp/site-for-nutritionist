@@ -1,10 +1,8 @@
 import { RichText } from "../rich-text"
 
 type Image = {
-    data: {
-        id: number
-        attributes: { name: string, url: string }
-    }
+    id: number
+    attributes: { name: string, url: string }
 }
 
 type StrapiAttributes = Record<string, any>
