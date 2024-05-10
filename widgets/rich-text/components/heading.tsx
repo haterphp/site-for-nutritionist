@@ -11,13 +11,13 @@ export function HeadingComponent(props: Heading): JSX.Element {
     }, [children])
 
     switch(level) {
-        case 1: return <h2 className={makeClassname('heading', "heading--1")}>{Content}</h2>
-        case 2: return <h3 className={makeClassname('heading', "heading--2")}>{Content}</h3>
-        case 3: return <h4 className={makeClassname('heading', "heading--3")}>{Content}</h4>
-        case 4: return <h5 className={makeClassname('heading', "heading--4")}>{Content}</h5>
-        case 5: return <h6 className={makeClassname('heading', "heading--5")}>{Content}</h6>
+        case 2: return <h2 className={makeClassname('rt-heading', "rt-heading--2")}>{Content}</h2>
+        case 3: return <h3 className={makeClassname('rt-heading', "rt-heading--3")}>{Content}</h3>
+        case 4: return <h4 className={makeClassname('rt-heading', "rt-heading--4")}>{Content}</h4>
+        case 5: return <h5 className={makeClassname('rt-heading', "rt-heading--5")}>{Content}</h5>
+        case 6: return <h6 className={makeClassname('rt-heading', "rt-heading--6")}>{Content}</h6>
 
         default:
-        case 0: return <h2 className={makeClassname('heading', "heading--0")}>{Content}</h2>
+        case 1: return <h2 className={makeClassname('rt-heading', "rt-heading--1")}>{Content}</h2>
     }
 }

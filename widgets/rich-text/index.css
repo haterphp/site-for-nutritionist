@@ -1,0 +1,52 @@
+.rt-heading,
+.rt-paragraph,
+.rt-list {
+  @apply pb-3;
+}
+
+/* Heading */
+.rt-heading {
+  @apply font-semibold;
+}
+
+.rt-heading--1 {
+  @apply text-4xl;
+}
+
+.rt-heading--2 {
+  @apply text-3xl;
+}
+
+.rt-heading--3 {
+  @apply text-2xl;
+}
+
+.rt-heading--4 {
+  @apply text-xl;
+}
+
+.rt-heading--5 {
+  @apply text-[18px];
+}
+
+.rt-heading--6 {
+  @apply text-[16px];
+}
+
+/* Text */
+
+.rt-text--bold {
+  @apply font-semibold;
+}
+
+.rt-text--italic {
+  @apply italic;
+}
+
+.rt-text--strikethrough {
+  @apply line-through;
+}
+
+.rt-text--underline {
+  @apply underline underline-offset-1;
+}

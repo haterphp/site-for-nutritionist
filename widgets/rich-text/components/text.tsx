@@ -7,11 +7,11 @@ export function TextComponent(props: Text): JSX.Element {
     
     const className = useMemo(() => {
         return makeClassname(
-            'text',
-            bold && 'text--bold',
-            italic && 'text--italic',
-            strikethrough && 'text--strikethrough',
-            underline && 'text--underline'
+            'rt-text',
+            bold && 'rt-text--bold',
+            italic && 'rt-text--italic',
+            strikethrough && 'rt-text--strikethrough',
+            underline && 'rt-text--underline'
         )
     }, [bold, italic, strikethrough, underline])
 

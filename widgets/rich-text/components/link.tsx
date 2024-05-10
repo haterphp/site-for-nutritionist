@@ -6,7 +6,7 @@ export function LinkComponent(props: LinkType) {
     const { url, children } = props
 
     return (
-        <Link href={url}>
+        <Link className="link" href={url} target="_blank">
             {children.map(item => richTextParser(item))}
         </Link>
     )
