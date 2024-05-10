@@ -1,3 +1,4 @@
+import { useCreateCallbackRequestRequest } from "@/entities/callback-requests";
 import {
   Button,
   Input,
@@ -8,6 +9,7 @@ import {
   ModalTitle,
   useModal,
 } from "@/shared/components";
+import { useRegisterField } from "@/shared/helpers/forms";
 import { FC } from "react";
 
 interface IRequestCallbackModalProps {
@@ -21,25 +23,35 @@ export default function RequestCallbackModal(
 
   const state = useModal();
 
+  const handleOnClose = (): void => {
+    state.close()
+    setTimeout(form.reset, 250)
+  }
+
+  const { form, onSubmit } = useCreateCallbackRequestRequest(handleOnClose)
+  const register = useRegisterField(form)
+
   return (
     <>
       <OpenButton {...state} />
 
-      <Modal isOpen={state.isOpen} onClose={state.close}>
-        <ModalTitle title="Запрос на обратный звонок" onClose={state.close} />
+      <Modal isOpen={state.isOpen} onClose={handleOnClose}>
+        <ModalTitle title="Запрос на обратный звонок" onClose={handleOnClose} />
 
-        <ModalContainer>
-          <Input label={"ФИО"} />
+        <form onSubmit={form.handleSubmit(onSubmit)}>
+          <ModalContainer className="flex flex-col gap-1">
+              <Input label={"ФИО"} {...register('name')} />
 
-          <Input label={"Почта"} />
+              <Input label={"Почта"} {...register('email')} />
 
-          <Input label={"Номер телефона"} />
-        </ModalContainer>
+              <Input label={"Номер телефона"} {...register('phone')} />
+          </ModalContainer>
 
-        <ModalActions>
-          <Button color="secondary">Отменить</Button>
-          <Button color="primary">Отправить</Button>
-        </ModalActions>
+          <ModalActions>
+            <Button color="secondary" onClick={handleOnClose}>Отменить</Button>
+            <Button type="submit" color="primary">Отправить</Button>
+          </ModalActions>
+        </form>
       </Modal>
     </>
   );

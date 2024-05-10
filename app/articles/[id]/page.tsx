@@ -3,16 +3,17 @@
 import { PageHeader } from "@/features/page-header"
 import Image from "next/image"
 import { useParams } from "next/navigation"
-import { ReactNode, useEffect, useMemo, useState } from "react"
-
-const CommentsList = dynamic(() => import('@/widgets/comment-list'))
-const ArticleSidebar = dynamic(() => import('@/widgets/sidebars/article-sidebar'))
-
-import './index.css'
+import { ReactNode, useEffect, useState } from "react"
 import dynamic from "next/dynamic"
+
 import LayoutWithSidebar from "@/widgets/layouts/sidebar-layout"
 import { IArticleEntity, useArticleStore } from "@/entities/articles"
 import { RichText } from "@/widgets/rich-text"
+
+import './index.css'
+
+const CommentsList = dynamic(() => import('@/widgets/comment-list'))
+const ArticleSidebar = dynamic(() => import('@/widgets/sidebars/article-sidebar'))
 
 export default function CurrentArticlePage(): ReactNode {
     const params = useParams()
