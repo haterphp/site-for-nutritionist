@@ -4,12 +4,17 @@ import Link from "next/link";
 
 import { useDetectPath } from "@/shared/helpers/paths";
 
-import { Button, makeClassname, Modal, useModal } from "@/shared/components";
+import { Badge, Button, makeClassname } from "@/shared/components";
+
+import dynamic from "next/dynamic";
+
+import { useRouter } from "next/navigation";
+
+import { CartIcon } from "@/shared/assets/icons/cart";
+
+import { useCartStore } from "@/entities/cart";
 
 import "./index.css";
-import dynamic from "next/dynamic";
-import { useRouter } from "next/navigation";
-import { CartIcon } from "@/shared/assets/icons/cart";
 
 const LINKS = [
   { label: "Главная", to: "/" },
@@ -25,6 +30,8 @@ const RequestCallbackModal = dynamic(
 export default function Header(): JSX.Element {
   const detect = useDetectPath();
   const router = useRouter()
+
+  const cartEntities = useCartStore(state => state.entities)
 
   const handleOnRedirect = (): void => {
     router.push('/login')
@@ -70,9 +77,11 @@ export default function Header(): JSX.Element {
             />
           </div>
 
-          <button className="header-icon-button">
-            <CartIcon />
-          </button>
+            <Badge label={cartEntities.length.toString()} isVisible={cartEntities.length > 0}>
+              <button className="header-icon-button">
+                  <CartIcon />
+              </button>
+            </Badge>
 
           <Button color="secondary" className="min-w-[100px]" onClick={handleOnRedirect}>Войти</Button>
         </div>

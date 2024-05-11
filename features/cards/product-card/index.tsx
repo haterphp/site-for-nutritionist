@@ -10,6 +10,7 @@ import { Button } from "@/shared/components"
 
 import './index.css'
 import { useRouter } from "next/navigation"
+import { ICartItemEntity, useCartStore } from "@/entities/cart"
 
 interface IProductCardsContext extends ICardsGridContenxt {
     isHideButton: boolean
@@ -22,9 +23,20 @@ export function ProductCard(props: ICatalogEntity): JSX.Element {
 
     const { isHideButton, onClick } = useCardsContext<IProductCardsContext>()
 
+    const addProductToCart = useCartStore(state => state.add)
+
     const formattedPrice = useMemo(() => {
         return `${price} ₽`
     }, [price])
+
+    const handleOnAddToCart: MouseEventHandler = (e) => {
+        e.stopPropagation()
+
+        addProductToCart({
+            count: 1,
+            product: { id, title, image: images[0] }
+        })
+    } 
 
     const handleOnClick: MouseEventHandler = (e) => {
         router.push(`/catalog/${id}`)
@@ -47,7 +59,7 @@ export function ProductCard(props: ICatalogEntity): JSX.Element {
             <p className="product-card-price">{formattedPrice}</p>
 
         { !isHideButton && (
-            <Button className="w-full mt-3">
+            <Button className="w-full mt-3" onClick={handleOnAddToCart}>
                 Добавить в корзину
             </Button>
         )}

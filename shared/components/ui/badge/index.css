@@ -1,0 +1,10 @@
+.badge-container {
+  @apply relative;
+}
+
+.badge {
+  @apply absolute -top-2 -right-2
+  rounded-full
+  w-[20px] h-[20px] flex items-center justify-center text-[12px]
+  bg-primary-main text-white;
+}

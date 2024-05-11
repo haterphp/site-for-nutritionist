@@ -1,10 +1,14 @@
 import { IBadgeProps } from "./interfaces";
 
-import './index.css'
 import { makeClassname } from "../common/functions";
 
-export function Badge(props: IBadgeProps): JSX.Element {
-    const { id, className, label, children } = props
+import './index.css'
+import { ReactNode } from "react";
+
+export function Badge(props: IBadgeProps): ReactNode {
+    const { id, className, label, children, isVisible = true } = props
+
+    if (!isVisible) return children
 
     return (
         <div className="badge-container">
