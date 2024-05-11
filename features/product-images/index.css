@@ -1,0 +1,15 @@
+.product-images {
+  @apply flex gap-3 w-full sticky top-5;
+}
+
+.product-images-thumbnails {
+  @apply flex flex-col gap-1 min-w-[70px];
+}
+
+.product-images-thumbnail {
+  @apply !relative !h-[70px] cursor-pointer rounded hover:brightness-75 transition-all;
+}
+
+.product-images-preview {
+  @apply rounded flex-1 overflow-hidden relative h-[450px];
+}

@@ -6,6 +6,8 @@ interface ICatalogStoreState {
 }
 
 interface ICatalogStoreActions {
+    getOneById(id: ICatalogEntity['id']): Promise<ICatalogEntity>
+
     loadCategories(): Promise<void>
     loadCardsByCategory(category?: string): Promise<void>
 }

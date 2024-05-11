@@ -19,10 +19,6 @@ export default function ArticlePage(): JSX.Element {
         load: state.loadCards
     }))
 
-    const handleOnClick = (_: unknown, item: IArticleEntity): void => {
-        router.push(`/articles/${item.id}`)
-    }
-
     useEffect(() => {
         load()
     }, [load])
@@ -31,7 +27,7 @@ export default function ArticlePage(): JSX.Element {
         <div className='flex flex-col gap-5'>
             <PageHeader title='Статьи' />
 
-            <CardsGridTemplate items={data} CardFactory={ArticleCard} onClick={handleOnClick} />
+            <CardsGridTemplate items={data} CardFactory={ArticleCard} />
         </div>
     )
 }

@@ -9,6 +9,7 @@ import { Button, makeClassname, Modal, useModal } from "@/shared/components";
 import "./index.css";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
+import { CartIcon } from "@/shared/assets/icons/cart";
 
 const LINKS = [
   { label: "Главная", to: "/" },
@@ -68,6 +69,10 @@ export default function Header(): JSX.Element {
               )}
             />
           </div>
+
+          <button className="header-icon-button">
+            <CartIcon />
+          </button>
 
           <Button color="secondary" className="min-w-[100px]" onClick={handleOnRedirect}>Войти</Button>
         </div>

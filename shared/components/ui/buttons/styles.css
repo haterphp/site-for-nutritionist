@@ -1,11 +1,15 @@
 .btn {
-    @apply py-[12px] px-[16px] rounded bg-slate-100 cursor-pointer transition-colors;
+  @apply py-[12px] px-[16px] rounded bg-slate-100 cursor-pointer transition-colors;
 }
 
 .btn--primary {
-    @apply text-white bg-primary-main hover:bg-primary-main/80 active:bg-primary-dark;
+  @apply text-white bg-primary-main hover:bg-primary-main/80 active:bg-primary-dark;
 }
 
 .btn--secondary {
-    @apply text-white bg-secondary-main hover:bg-secondary-main/90 active:bg-secondary-dark;
+  @apply text-white bg-secondary-main hover:bg-secondary-main/90 active:bg-secondary-dark;
+}
+
+.btn:disabled {
+  @apply !bg-slate-200 cursor-not-allowed;
 }

@@ -1,20 +1,20 @@
 import { IArticleEntity, useArticleStore } from "@/entities/articles"
 import { ArticleCard } from "@/features/cards/article-card"
 import { CardsGridTemplate } from "@/widgets/layouts/cards-grid"
-import { useEffect } from "react"
-import { useRouter } from "next/navigation"
+import { useEffect, useMemo } from "react"
 import './index.css'
 
-export default function ArticleSidebar() {
+interface IArticleSidebarProps {
+    id: IArticleEntity['id']
+}
 
-    const router = useRouter()
+export default function ArticleSidebar(props: IArticleSidebarProps) {
+    const {id: articleId} = props
 
-    const articles = useArticleStore(state => state.cards)
+    const cards = useArticleStore(state => state.cards)
     const load = useArticleStore(state => state.loadCards)
 
-    const handleOnClick = (_: unknown, item: IArticleEntity) => {
-        router.push(`/articles/${item.id}`)
-    }
+    const articles = useMemo(() => cards.filter(item => item.id !== articleId).slice(0, 3), [cards, articleId])
 
     useEffect(() => {
         load()
@@ -26,7 +26,6 @@ export default function ArticleSidebar() {
 
             <CardsGridTemplate
                 items={articles.slice(0, 3)}
-                onClick={handleOnClick}
                 CardFactory={ArticleCard}
                 className="lg:!grid-cols-1 !grid-cols-2"
             />

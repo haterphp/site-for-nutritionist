@@ -9,13 +9,16 @@ import { ICardsGridContenxt, useCardsContext } from "@/widgets/layouts/cards-gri
 import { Button } from "@/shared/components"
 
 import './index.css'
+import { useRouter } from "next/navigation"
 
 interface IProductCardsContext extends ICardsGridContenxt {
     isHideButton: boolean
 }
 
 export function ProductCard(props: ICatalogEntity): JSX.Element {
-    const { images, title, description, price } = props
+    const { id, images, title, description, price } = props
+
+    const router = useRouter()
 
     const { isHideButton, onClick } = useCardsContext<IProductCardsContext>()
 
@@ -24,6 +27,7 @@ export function ProductCard(props: ICatalogEntity): JSX.Element {
     }, [price])
 
     const handleOnClick: MouseEventHandler = (e) => {
+        router.push(`/catalog/${id}`)
         onClick && onClick(e, props)
     }
 

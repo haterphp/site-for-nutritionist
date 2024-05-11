@@ -15,10 +15,6 @@ export default function AccountFavoritePage() {
         load: state.loadCardsByCategory
     }))
 
-    const handleOnClick = (_: unknown, item: ICatalogEntity): void => {
-        router.push(`/catalog/${item.id}`)
-    }
-
     useEffect(() => {
         load()
     }, [load])
@@ -31,7 +27,6 @@ export default function AccountFavoritePage() {
                 items={data}
                 CardFactory={ProductCard}
                 context={{ isHideButton: true }}
-                onClick={handleOnClick}
             />    
         </>
     )

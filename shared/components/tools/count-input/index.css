@@ -1,0 +1,15 @@
+.count-input {
+  @apply flex;
+}
+
+.count-input-value {
+  @apply flex-1 flex items-center justify-center bg-slate-100;
+}
+
+.count-input-button:first-of-type {
+  @apply rounded-none rounded-l;
+}
+
+.count-input-button:last-of-type {
+  @apply rounded-none rounded-r;
+}

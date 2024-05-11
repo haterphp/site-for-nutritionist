@@ -1,5 +1,5 @@
 .header {
-  @apply py-5 border-b-2 flex justify-between items-center;
+  @apply py-5 border-b-2 flex justify-between items-center relative;
 }
 
 .header-title {
@@ -19,7 +19,7 @@
 }
 
 .header-links {
-  @apply flex gap-10;
+  @apply flex gap-10 absolute left-1/3;
 }
 
 .header-link {
@@ -35,5 +35,9 @@
 }
 
 .header-left-content {
-  @apply flex gap-10 w-[340px];
+  @apply flex items-center gap-5;
+}
+
+.header-icon-button {
+  @apply p-3 hover:bg-slate-100 rounded transition-colors;
 }

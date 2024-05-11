@@ -11,13 +11,17 @@ import { Button } from "@/shared/components";
 import { useCardsContext } from "@/widgets/layouts/cards-grid/context";
 
 import './index.css'
+import { useRouter } from "next/navigation";
 
 export function ArticleCard(props: IArticleEntity) {
-    const { content, url, title } = props
+    const { id, description, url, title } = props
+
+    const router = useRouter()
     
     const { onClick } = useCardsContext()
 
     const handleOnClick: MouseEventHandler = (e) => {
+        router.push(`/articles/${id}`)
         onClick && onClick(e, props)
     }
     
@@ -27,7 +31,7 @@ export function ArticleCard(props: IArticleEntity) {
 
             <h2 className="article-title">{title}</h2>
 
-            <p className="article-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, ab autem voluptatum repudiandae adipisci tempora eos ullam ea quis esse nulla voluptas magnam ratione dolores!</p>
+            <p className="article-description">{description}</p>
 
             <Button color="secondary" onClick={handleOnClick}>Подробнее</Button>
         </article>

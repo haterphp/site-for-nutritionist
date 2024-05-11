@@ -1,5 +1,5 @@
 import { HttpAppService } from "@/shared/utils";
-import { CatalogResponseItem, CategoryResponseItem, ICatalogEntity, ICatalogRepository, ICategoryEntity, IGetAllCatalogItemsResponse, IGetAllCategoriesResponse } from "../interfaces";
+import { CatalogResponseItem, CategoryResponseItem, ICatalogEntity, ICatalogRepository, ICategoryEntity, IGetAllCatalogItemsResponse, IGetAllCategoriesResponse, IGetOneCatalogItemsResponse } from "../interfaces";
 
 export class CatalogRepository implements ICatalogRepository {
     public async getAll(id?: string): Promise<ICatalogEntity[]> {
@@ -22,6 +22,16 @@ export class CatalogRepository implements ICatalogRepository {
         })
     }
 
+    public async getOneProduct(id: ICatalogEntity['id']): Promise<ICatalogEntity> {
+        const params: Record<string, any> = {
+            populate: { 0: 'images' }
+        }
+
+        return HttpAppService.get<IGetOneCatalogItemsResponse>(`/api/products/${id}`, { params })
+            .then(payload => this._transformToProductEntity(payload.data))
+    }
+    
+
     private _transformToCategoryEntity(data: CategoryResponseItem): ICategoryEntity {
         return {
             id: String(data.id),
@@ -35,6 +45,7 @@ export class CatalogRepository implements ICatalogRepository {
             price: item.attributes.price,
             title: item.attributes.title,
             description: item.attributes.description,
+            content: item.attributes.content,
             images: item.attributes.images.data.map(image => process.env.NEXT_PUBLIC_ADMIN_URL + image.attributes.url)
         }
     }

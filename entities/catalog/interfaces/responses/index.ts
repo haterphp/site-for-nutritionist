@@ -1,4 +1,4 @@
-import { IGetAllResponse, Image, IResponseItem, StrapiAttributes } from "@/shared/interfaces";
+import { IGetAllResponse, IGetOneResponse, Image, IResponseItem, RichText, StrapiAttributes } from "@/shared/interfaces";
 
 interface CategoryAttributes extends StrapiAttributes {
     title: string
@@ -8,6 +8,7 @@ interface CatalogItemAttributes extends StrapiAttributes {
     title: string
     description: string
     price: number
+    content: RichText
     images: { data: Image[] }
     createdAt: string
 }
@@ -19,9 +20,12 @@ type CatalogResponseItem = IResponseItem<CatalogItemAttributes>
 type IGetAllCategoriesResponse = IGetAllResponse<CategoryResponseItem>
 type IGetAllCatalogItemsResponse = IGetAllResponse<CatalogResponseItem>
 
+type IGetOneCatalogItemsResponse = IGetOneResponse<CatalogResponseItem>
+
 export type {
     CategoryResponseItem,
     CatalogResponseItem,
     IGetAllCategoriesResponse,
-    IGetAllCatalogItemsResponse
+    IGetAllCatalogItemsResponse,
+    IGetOneCatalogItemsResponse
 }

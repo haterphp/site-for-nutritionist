@@ -1,0 +1,19 @@
+.product-sidebar {
+  @apply flex flex-col gap-5 p-5 lg:mt-[63px];
+}
+
+.product-price {
+  @apply text-3xl font-semibold;
+}
+
+.product-sidebar-buttons {
+  @apply flex flex-col gap-1 items-center;
+}
+
+.product-sidebar-request-callback {
+  @apply underline hover:opacity-85 transition-colors cursor-pointer text-sm;
+}
+
+.product-count {
+  @apply flex flex-col gap-2;
+}

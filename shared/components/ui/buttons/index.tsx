@@ -14,6 +14,7 @@ const Button = (props: IButtonProps): JSX.Element => {
         size = 'medium',
         color = 'primary',
         className: extenalClassname,
+        isDisabled = false,
         ...rest
     } = props
 
@@ -23,7 +24,7 @@ const Button = (props: IButtonProps): JSX.Element => {
     )
 
     return (
-        <button type={type} className={className} {...rest}>
+        <button type={type} className={className} disabled={isDisabled} {...rest}>
             {rest.children}
         </button>
     )

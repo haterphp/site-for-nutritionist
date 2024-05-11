@@ -8,7 +8,7 @@ import dynamic from "next/dynamic"
 
 import LayoutWithSidebar from "@/widgets/layouts/sidebar-layout"
 import { IArticleEntity, useArticleStore } from "@/entities/articles"
-import { RichText } from "@/widgets/rich-text"
+import { RichText } from "@/shared/components"
 
 import './index.css'
 
@@ -30,7 +30,7 @@ export default function CurrentArticlePage(): ReactNode {
     const { title, content, url } = article
 
     return (
-        <LayoutWithSidebar Sidebar={<ArticleSidebar />} isReverse className="article-page">
+        <LayoutWithSidebar Sidebar={<ArticleSidebar id={article.id} />} isReverse className="article-page">
             <PageHeader
                 title={title}
                 BackButton={{ visible: true, url: '/articles', text: 'Вернуться к статьям' }}

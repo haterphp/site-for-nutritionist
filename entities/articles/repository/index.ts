@@ -22,6 +22,7 @@ export class AritcleRepository implements IArticleRepository {
             id: String(data.id),
             title: data.attributes.title,
             url: process.env.NEXT_PUBLIC_ADMIN_URL + data.attributes.image.data.attributes.url,
+            description: data.attributes.description,
             content: data.attributes.content
         }
     }

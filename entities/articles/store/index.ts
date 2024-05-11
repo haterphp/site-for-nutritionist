@@ -12,7 +12,7 @@ export const articleStore = create<ArticleStore>()((set, get) => ({
         
         if (element === undefined) {
             return repository.getOne(id).then(item => {
-                set((prev) => ({ ...prev, cards: [...prev.cards] }))
+                set((prev) => ({ ...prev, cards: [...prev.cards, item] }))
                 return item
             })
         }
