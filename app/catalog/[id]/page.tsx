@@ -26,7 +26,7 @@ export default function ProductPage(): ReactNode {
     if (product === null) return null
 
     return (
-        <LayoutWithSidebar Sidebar={<ProductPriceSidebar price={product.price} />} isReverse>
+        <LayoutWithSidebar Sidebar={<ProductPriceSidebar {...product} />} isReverse>
             <PageHeader
                 title={product.title}
                 BackButton={{ visible: true, url: '/catalog' }}

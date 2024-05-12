@@ -26,3 +26,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.product-card-badge {
+  @apply p-3 flex items-center justify-center bg-secondary-main/30 rounded mt-3 cursor-default;
+}

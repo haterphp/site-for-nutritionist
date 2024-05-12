@@ -6,6 +6,7 @@ import { UserStoreProvider } from "@/entities/user";
 
 import "./globals.css";
 import dynamic from "next/dynamic";
+import { CartProvider } from "@/entities/cart";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,9 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={inter.className}>
+
+        <CartProvider />
+
         <UserStoreProvider>
           <AppLayout>{children}</AppLayout>
         </UserStoreProvider>

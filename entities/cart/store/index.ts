@@ -6,7 +6,7 @@ import { CartRepository } from "../repository";
 const repository = new CartRepository()
 
 export const cartStore = create<CartStore>()((set, get) => ({
-    entities: repository.getAll(),
+    entities: [],
 
     add: (payload) => {
         const entity: ICartItemEntity = { id: Math.random().toString(), ...payload }
@@ -45,6 +45,10 @@ export const cartStore = create<CartStore>()((set, get) => ({
             repository.emit(newEntities)
             set((prev) => ({ ...prev, entities: newEntities }))
         }
+    },
+
+    loadEntities: () => {
+        set((prev) => ({ ...prev, entities: repository.getAll() }))
     },
 
     reset: () => {

@@ -2,6 +2,7 @@ interface ICartProdcutEntity {
     id: string
     title: string
     image: string
+    price: number
 }
 
 interface ICartItemEntity {

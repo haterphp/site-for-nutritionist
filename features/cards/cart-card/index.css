@@ -1,0 +1,15 @@
+.cart-card {
+  @apply w-full border-b-2 border-slate-200 flex items-center py-5;
+}
+
+.cart-card-image {
+  @apply !relative !w-[70px];
+}
+
+.cart-card-title {
+  @apply w-[350px] mx-5;
+}
+
+.cart-card > .count-input {
+  @apply flex-1 max-w-[250px] ml-auto;
+}

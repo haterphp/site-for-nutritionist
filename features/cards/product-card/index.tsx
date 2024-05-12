@@ -10,7 +10,7 @@ import { Button } from "@/shared/components"
 
 import './index.css'
 import { useRouter } from "next/navigation"
-import { ICartItemEntity, useCartStore } from "@/entities/cart"
+import { useCartStore } from "@/entities/cart"
 
 interface IProductCardsContext extends ICardsGridContenxt {
     isHideButton: boolean
@@ -23,7 +23,10 @@ export function ProductCard(props: ICatalogEntity): JSX.Element {
 
     const { isHideButton, onClick } = useCardsContext<IProductCardsContext>()
 
+    const entities = useCartStore(state => state.entities)
     const addProductToCart = useCartStore(state => state.add)
+
+    const entityInCart = useMemo(() => entities.find(e => e.product.id === id), [entities, id])
 
     const formattedPrice = useMemo(() => {
         return `${price} ₽`
@@ -34,7 +37,7 @@ export function ProductCard(props: ICatalogEntity): JSX.Element {
 
         addProductToCart({
             count: 1,
-            product: { id, title, image: images[0] }
+            product: { id, title, price, image: images[0] }
         })
     } 
 
@@ -58,11 +61,15 @@ export function ProductCard(props: ICatalogEntity): JSX.Element {
 
             <p className="product-card-price">{formattedPrice}</p>
 
-        { !isHideButton && (
-            <Button className="w-full mt-3" onClick={handleOnAddToCart}>
-                Добавить в корзину
-            </Button>
-        )}
+            { (!isHideButton && entityInCart === undefined) && (
+                <Button className="w-full mt-3" onClick={handleOnAddToCart}>
+                    Добавить в корзину
+                </Button>
+            )}
+
+            {entityInCart !== undefined && (
+                <div className="product-card-badge">Товар уже в корзине!</div>
+            )}
         </article>
     )
 }

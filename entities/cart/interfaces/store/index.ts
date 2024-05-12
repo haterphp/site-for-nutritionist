@@ -9,6 +9,7 @@ interface ICartStoreActions {
     remove(id: ICartItemEntity['id']): void
     update(payload: ICartItemEntity): void
 
+    loadEntities(): void
     reset(): void
 }
 

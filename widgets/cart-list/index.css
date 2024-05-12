@@ -1,0 +1,3 @@
+.cart-list-clear-all {
+  @apply text-slate-400 hover:text-slate-300 transition-colors cursor-pointer;
+}

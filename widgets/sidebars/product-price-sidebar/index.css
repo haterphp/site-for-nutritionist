@@ -17,3 +17,7 @@
 .product-count {
   @apply flex flex-col gap-2;
 }
+
+.product-sidebar-badge {
+  @apply p-3 bg-secondary-main/30 flex items-center justify-center cursor-default w-full;
+}

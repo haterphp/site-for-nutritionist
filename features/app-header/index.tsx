@@ -15,6 +15,7 @@ import { CartIcon } from "@/shared/assets/icons/cart";
 import { useCartStore } from "@/entities/cart";
 
 import "./index.css";
+import { MouseEventHandler } from "react";
 
 const LINKS = [
   { label: "Главная", to: "/" },
@@ -33,8 +34,8 @@ export default function Header(): JSX.Element {
 
   const cartEntities = useCartStore(state => state.entities)
 
-  const handleOnRedirect = (): void => {
-    router.push('/login')
+  const handleOnRedirect = (url: string): MouseEventHandler => {
+    return () => router.push(url)
   }
 
   return (
@@ -78,12 +79,12 @@ export default function Header(): JSX.Element {
           </div>
 
             <Badge label={cartEntities.length.toString()} isVisible={cartEntities.length > 0}>
-              <button className="header-icon-button">
+              <button className="header-icon-button" onClick={handleOnRedirect('/cart')}>
                   <CartIcon />
               </button>
             </Badge>
 
-          <Button color="secondary" className="min-w-[100px]" onClick={handleOnRedirect}>Войти</Button>
+          <Button color="secondary" className="min-w-[100px]" onClick={handleOnRedirect('/login')}>Войти</Button>
         </div>
 
     </header>

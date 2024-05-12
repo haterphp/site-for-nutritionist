@@ -1,3 +1,5 @@
+'use client'
+
 import { ReactNode, useMemo } from 'react'
 import { ArrowBack } from '@/shared/assets/icons/arrow-back'
 

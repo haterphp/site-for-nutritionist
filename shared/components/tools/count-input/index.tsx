@@ -1,17 +1,30 @@
-import { Dispatch, SetStateAction } from 'react'
+'use client'
+
+import { useState } from 'react'
 import { Button } from '../../ui'
 import './index.css'
 
 interface ICountInputProps {
-    value: number
-    setValue: Dispatch<SetStateAction<number>>
+    defaultValue?: number
+    onChange: (value: number) => void
 }
 
 export function CountInput (props: ICountInputProps): JSX.Element {
-    const {value, setValue} = props
+    const { onChange, defaultValue = 1 } = props
 
-    const decrement= () => setValue((prev) => prev > 0 ? prev - 1 : prev)
-    const increment = () => setValue((prev) => prev + 1)
+    const [value, setValue] = useState(defaultValue)
+
+    const decrement = () => setValue((prev) => {
+        const value = prev > 0 ? prev - 1 : prev
+        onChange(value)
+        return value
+    })
+
+    const increment = () => setValue((prev) => {
+        const value = prev + 1
+        onChange(value)
+        return value
+    })
 
     return (
         <div className='count-input'>
