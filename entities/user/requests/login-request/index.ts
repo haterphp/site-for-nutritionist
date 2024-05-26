@@ -8,6 +8,7 @@ import { LoginValidatorFactory } from "../../validators"
 import { useUserStore } from "../../provider";
 import { useApplyFormErrors } from "@/shared/helpers/forms";
 import { COMMON_ERRORS_MESSAGES } from "@/shared/messages/common";
+import { useRouter } from "next/navigation";
 
 interface IUseLoginRequest {
     form: UseFormReturn<ILoginPort>
@@ -20,6 +21,8 @@ const DEFAULT_VALUES: ILoginPort = {
 }
 
 export const useLoginRequest = (): IUseLoginRequest => {
+    const router = useRouter()
+
     const form = useForm({ defaultValues: DEFAULT_VALUES })
 
     const applyMessageErrors = useApplyFormErrors(form)
@@ -32,6 +35,7 @@ export const useLoginRequest = (): IUseLoginRequest => {
         try {
             _validator.validate(data)
             await loginRequest(data)
+            router.push('/account')
         } catch (error) {
             const e = error as ExceptionService<ILoginErrors>
             if (e.data !== undefined) {

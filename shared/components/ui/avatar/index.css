@@ -1,0 +1,10 @@
+.avatar {
+  @apply min-w-[50px]
+    h-[50px]
+    rounded-full 
+    bg-slate-100 
+    uppercase
+    text-[20px]
+    flex items-center
+    justify-center;
+}

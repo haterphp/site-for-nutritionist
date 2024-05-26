@@ -5,7 +5,7 @@ import { Button, Input } from "@/shared/components";
 import { useEffect } from "react";
 
 export default function Home() {
-  const { user } = useUserStore((store) => ({ user: store.user }))
+  const user = useUserStore(state => state.user)
 
   useEffect(() => {
     console.log(user)

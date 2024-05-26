@@ -7,6 +7,7 @@ import {
   forwardRef,
   Ref,
   useCallback,
+  useEffect,
   useMemo,
   useRef,
   useState,
@@ -67,6 +68,10 @@ const InputRenderFunction = (
       rest.onBlur?.(e);
     },
   }), [rest, setIsFocus, setIsDirty]);
+
+  useEffect(() => {
+    setIsDirty(!!value)
+  }, [value])
 
   const InputComponent = useMemo(() => {
     if (type === 'textarea') return (

@@ -41,3 +41,7 @@
 .header-icon-button {
   @apply p-3 hover:bg-slate-100 rounded transition-colors;
 }
+
+.header-avatar {
+  @apply hover:bg-slate-200 transition-colors cursor-pointer;
+}

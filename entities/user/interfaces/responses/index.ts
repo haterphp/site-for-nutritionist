@@ -8,4 +8,11 @@ interface Attributes extends StrapiAttributes {
     createdAt: string
 }
 
+export type AuthUserResponse = {id: number} & Attributes
+
+export interface IUserLoginResponse {
+    jwt: string
+    user: AuthUserResponse
+}
+
 export type IUserResponse = IResponseItem<Attributes>

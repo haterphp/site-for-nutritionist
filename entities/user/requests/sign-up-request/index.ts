@@ -8,6 +8,7 @@ import { SignUpValidatorFactory } from "../../validators"
 import { useUserStore } from "../../provider";
 import { useApplyFormErrors } from "@/shared/helpers/forms";
 import { COMMON_ERRORS_MESSAGES } from "@/shared/messages/common";
+import { useRouter } from "next/navigation";
 
 interface IUseSignUpRequest {
     form: UseFormReturn<ISignUpPort>
@@ -21,6 +22,8 @@ const DEFAULT_VALUES: ISignUpPort = {
 }
 
 export const useSingUpRequest = (): IUseSignUpRequest => {
+    const router = useRouter()
+
     const form = useForm({ defaultValues: DEFAULT_VALUES })
 
     const _applyMessageErrors = useApplyFormErrors(form)
@@ -33,6 +36,7 @@ export const useSingUpRequest = (): IUseSignUpRequest => {
         try {
             _validator.validate(data)
             await _request(data)
+            router.push('/login')
         } catch (error) {
             const e = error as ExceptionService<ISignUpErrors>
             if (e.data !== undefined) {

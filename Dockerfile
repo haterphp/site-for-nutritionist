@@ -1,10 +1,9 @@
-FROM node:18-alpine
+FROM node:18
 
-ARG HOST_URL
 WORKDIR /app
-ENV NEXT_PUBLIC_ADMIN_URL=http://localhost:1337
-COPY . .
-RUN npm i
+COPY package*.json ./
+RUN npm install
 RUN npm run build
+COPY . .
 EXPOSE 3000
 CMD npm run start

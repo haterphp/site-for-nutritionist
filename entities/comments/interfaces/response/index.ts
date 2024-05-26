@@ -3,7 +3,7 @@ import { IGetAllResponse, IGetOneResponse, IResponseItem, StrapiAttributes } fro
 
 interface Attributes extends StrapiAttributes {
     comment: string
-    user: IGetOneResponse<IUserResponse>
+    author: IGetOneResponse<IUserResponse>
     createdAt: string
 }
 

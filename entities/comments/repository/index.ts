@@ -5,7 +5,7 @@ export class CommentsRepository implements ICommentsRepository {
     public async getAll(id: string): Promise<ICommentEntity[]> {
         const params = {
             filters: { article: { '$eq': id } },
-            populate: { 0: 'user' }
+            populate: { 0: 'author' }
         }
 
         return HttpAppService.get<IGetAllComments>(`/api/comments`, { params }).then((payload) => {
@@ -16,7 +16,7 @@ export class CommentsRepository implements ICommentsRepository {
     private _transformToEntity(data: CommentResponseItem): ICommentEntity {
         return {
             id: String(data.id),
-            user: data.attributes.user.data.attributes.username,
+            user: data.attributes.author.data.attributes.username,
             comment: data.attributes.comment,
         }
     }

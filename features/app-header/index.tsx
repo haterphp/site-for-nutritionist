@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { useDetectPath } from "@/shared/helpers/paths";
 
-import { Badge, Button, makeClassname } from "@/shared/components";
+import { Avatar, Badge, Button, makeClassname } from "@/shared/components";
 
 import dynamic from "next/dynamic";
 
@@ -15,7 +15,8 @@ import { CartIcon } from "@/shared/assets/icons/cart";
 import { useCartStore } from "@/entities/cart";
 
 import "./index.css";
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, useEffect } from "react";
+import { useUserStore } from "@/entities/user";
 
 const LINKS = [
   { label: "Главная", to: "/" },
@@ -32,6 +33,7 @@ export default function Header(): JSX.Element {
   const detect = useDetectPath();
   const router = useRouter()
 
+  const user = useUserStore(state => state.user)
   const cartEntities = useCartStore(state => state.entities)
 
   const handleOnRedirect = (url: string): MouseEventHandler => {
@@ -84,7 +86,15 @@ export default function Header(): JSX.Element {
               </button>
             </Badge>
 
-          <Button color="secondary" className="min-w-[100px]" onClick={handleOnRedirect('/login')}>Войти</Button>
+            {  user === null ? (
+              <Button
+                color="secondary"
+                className="min-w-[100px]"
+                onClick={handleOnRedirect('/login')}
+              >
+                  Войти
+              </Button>
+          ) : (<Avatar value={user.name.charAt(0)} className="header-avatar" onClick={handleOnRedirect('/account')} />) }
         </div>
 
     </header>

@@ -1,5 +1,6 @@
 import { ICommentEntity } from '@/entities/comments'
 import './index.css'
+import { Avatar } from '@/shared/components'
 
 
 export function CommentCard(props: ICommentEntity) {
@@ -7,9 +8,7 @@ export function CommentCard(props: ICommentEntity) {
 
     return (
         <div className="comment">
-            <div className="comment-avatar">
-                {user.charAt(0)}
-            </div>
+            <Avatar value={user.charAt(0)} />
 
             <div className="comment-content">
                 <h3 className="comment-title">{user}</h3>
