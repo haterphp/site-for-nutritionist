@@ -36,6 +36,9 @@ export const UserStoreProvider: FC<PropsWithChildren> = ({children}) => {
           if (typeof window !== undefined) window.document.body.style.overflow = ''
           setIsLoading(false)
         })
+      } else {
+        if (typeof window !== undefined) window.document.body.style.overflow = ''
+        setTimeout(setIsLoading, 1000, false)
       }
     }, [])
 

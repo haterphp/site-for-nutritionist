@@ -18,7 +18,7 @@ export default function AccountSidebar(): JSX.Element {
 
     const items = useMemo<INavbarItem[]>(() => [
         { id: '/account', label: 'Личные данные', isActive: detect, onClick: handleOnClick },
-        { id: '/account/favorite', label: 'Избранное', isActive: detect, onClick: handleOnClick },
+        // { id: '/account/favorite', label: 'Избранное', isActive: detect, onClick: handleOnClick },
         { id: '/account/orders', label: 'Заказы', isActive: detect, onClick: handleOnClick },
         { id: 'logout', label: 'Выйти из профиля', isActive: () => false, onClick: handleOnLogout },
     ], [handleOnClick, detect])
