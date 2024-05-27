@@ -7,6 +7,7 @@ import { UserStoreProvider } from "@/entities/user";
 import "./globals.css";
 import dynamic from "next/dynamic";
 import { CartProvider } from "@/entities/cart";
+import { SnackbarProvider } from "@/shared/components";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,11 +27,13 @@ export default function RootLayout({
     <html lang="ru">
       <body className={inter.className}>
 
-        <CartProvider />
+        <SnackbarProvider>
+          <CartProvider />
 
-        <UserStoreProvider>
-          <AppLayout>{children}</AppLayout>
-        </UserStoreProvider>
+          <UserStoreProvider>
+            <AppLayout>{children}</AppLayout>
+          </UserStoreProvider>
+        </SnackbarProvider>
 
         <div id="portal"></div>
       </body>

@@ -20,7 +20,9 @@ export class UserRepository implements IUserRepository {
 
             return user
         }).catch((error) => {
-            if (error.error.status === HttpCode.BAD_REQUEST) {
+            const status = error.data.error.status
+
+            if (status === HttpCode.BAD_REQUEST) {
                 throw ExceptionService.new({
                     status: {
                         code: InternalCode.USER_NOT_FOUND,

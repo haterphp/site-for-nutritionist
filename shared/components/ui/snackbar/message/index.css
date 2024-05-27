@@ -1,0 +1,33 @@
+.message {
+  @apply p-3 rounded text-white w-full;
+}
+
+/* Colors */
+
+.message--primary {
+  @apply bg-primary-main;
+}
+
+.message--error {
+  @apply bg-red-400;
+}
+
+/* Animation */
+
+.message-enter {
+  opacity: 0;
+}
+
+.message-enter-active {
+  opacity: 1;
+  transition: opacity 0.25s ease-in;
+}
+
+.message-exit {
+  opacity: 1;
+}
+
+.message-exit-active {
+  opacity: 0;
+  transition: opacity 0.25s ease-in;
+}
