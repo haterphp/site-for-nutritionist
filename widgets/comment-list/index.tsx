@@ -1,13 +1,14 @@
-import { Button, Input, makeClassname } from "@/shared/components";
+import { makeClassname } from "@/shared/components";
 
 import { CommentCard } from "@/features/cards/comment-card";
 
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 
 import './index.css'
 import { ICommonHTMLProps } from "@/shared/components/ui/common/interfaces";
 import { IArticleEntity } from "@/entities/articles";
 import { useCommentsStore } from "@/entities/comments";
+import { CreateCommentForm } from "../forms/create-comment";
 
 interface ICommentsSidebarProps extends Omit<ICommonHTMLProps, 'children'> {
     articleId: IArticleEntity['id']
@@ -36,17 +37,7 @@ export default function CommentSidebar(props: ICommentsSidebarProps) {
         <div className={makeClassname("comments-list", className)} id={id}>
             <h2 className="comments-list-title">Комментарии</h2>
 
-            <form className="flex flex-col gap-1 items-start">
-                <Input
-                    type="textarea"
-                    label={"Комментарий"}
-                    placeholder="Оставьте ваш комментарий"
-                    rows={3}
-                    className="w-full"
-                />
-
-                <Button>Отправить</Button>
-            </form>
+            <CreateCommentForm articleId={articleId} />
 
             {entities.length > 0 
                 ? (<div className="comments-list-content">

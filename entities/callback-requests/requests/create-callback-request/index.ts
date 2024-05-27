@@ -8,6 +8,7 @@ import { COMMON_ERRORS_MESSAGES } from "@/shared/messages/common";
 import { ICreateCallbackRequestErrors, ICreateCallbackRequestPort } from "../../interfaces";
 import { CallbackRequestsRepository } from "../../repository";
 import { CreateCallbackRequestValidatorFactory } from "../../validators";
+import { useSnackbar } from "@/shared/components";
 
 interface IUseCreateCallbackRequestRequest {
     form: UseFormReturn<ICreateCallbackRequestPort>
@@ -21,6 +22,7 @@ const DEFAULT_VALUES: ICreateCallbackRequestPort = {
 }
 
 export const useCreateCallbackRequestRequest = (onSuccess: () => void): IUseCreateCallbackRequestRequest => {
+    const snackbar = useSnackbar()
     const form = useForm({ defaultValues: DEFAULT_VALUES })
 
     const applyMessageErrors = useApplyFormErrors(form)
@@ -32,7 +34,11 @@ export const useCreateCallbackRequestRequest = (onSuccess: () => void): IUseCrea
     const handleOnSubmit = async (data: ICreateCallbackRequestPort): Promise<void> => {
         try {
             _validator.validate(data)
-            _request(data).then(onSuccess)
+            
+            _request(data).then(() => {
+                snackbar.make({ message: 'Запрос успешно отправлен', color: 'primary' })
+                onSuccess()
+            })
         } catch (error) {
             const e = error as ExceptionService<ICreateCallbackRequestErrors>
             if (e.data !== undefined) {

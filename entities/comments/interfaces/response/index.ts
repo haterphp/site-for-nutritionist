@@ -8,4 +8,5 @@ interface Attributes extends StrapiAttributes {
 }
 
 export type CommentResponseItem = IResponseItem<Attributes>
+export type IGetOneComment = IGetOneResponse<CommentResponseItem> 
 export type IGetAllComments = IGetAllResponse<CommentResponseItem> 

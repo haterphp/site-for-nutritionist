@@ -6,6 +6,7 @@ import { HttpCode, HttpHeaders, InternalCode, LocalStorageValues } from "@/share
 export class UserRepository implements IUserRepository {
     public async getMe(): Promise<AuthUserResponse> {
         return HttpAppService.get('/api/users/me')
+            .then((data) => new Promise((resolve) => setTimeout(resolve, 1000, data)))
     }
 
     public async login(data: ILoginPort): Promise<AuthUserResponse> {
@@ -16,7 +17,7 @@ export class UserRepository implements IUserRepository {
             }
         }).then(({ jwt, user }) => {
             window?.localStorage.setItem(LocalStorageValues.ACCESS_TOKEN, jwt)
-            HttpAppService.setHeaders(HttpHeaders.AUTHORIZATION, jwt)
+            HttpAppService.setHeaders(HttpHeaders.AUTHORIZATION, `Bearer ${jwt}`)
 
             return user
         }).catch((error) => {

@@ -1,6 +1,6 @@
 import { create, useStore } from "zustand";
 
-import { CommentsStore } from "../interfaces";
+import { CommentsStore, ICreateCommentPort } from "../interfaces";
 import { IArticleEntity } from "@/entities/articles";
 import { CommentsRepository } from "../repository";
 
@@ -13,6 +13,13 @@ export const commentsStore = create<CommentsStore>()((set, get) => ({
             set(prev => ({ ...prev, entities }))
         })
     },
+    
+    createComment: async (port: ICreateCommentPort) => {
+        repository.create(port).then((comment) => {
+            set((prev) => ({ ...prev, entities: [comment].concat(prev.entities) }))
+        })    
+    },
+
     reset: () => {
         set((prev) => ({ ...prev, entities: [] }))
     }

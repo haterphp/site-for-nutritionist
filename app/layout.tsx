@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={inter.className}>
+      <body className={inter.className} style={{ overflow: 'hidden' }}>
 
         <SnackbarProvider>
           <CartProvider />

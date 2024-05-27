@@ -3,7 +3,7 @@ import { IInputProps } from "../components/ui/inputs/interfaces";
 import { IValidationError, IValidationErrors } from "../utils";
 import { useCallback } from "react";
 
-type IUseRegisterField = UseFormRegisterReturn & Pick<IInputProps, 'isError' | 'feedback'>
+type IUseRegisterField = UseFormRegisterReturn & Pick<IInputProps, 'isError' | 'feedback' | 'value'>
 
 type MessagePipeFunction = (error: Exclude<IValidationError['errors'], undefined>) => string
 
@@ -11,7 +11,7 @@ type MessagePipeFunction = (error: Exclude<IValidationError['errors'], undefined
 const useRegisterField = <TFields extends FieldValues>(form: UseFormReturn<TFields>) => {
     return useCallback((name: Path<TFields>): IUseRegisterField => {
         const state = form.getFieldState(name)
-        return { ...form.register(name), isError: !!state.error?.message, feedback: state.error?.message }
+        return { ...form.register(name), value: form.watch(name), isError: !!state.error?.message, feedback: state.error?.message }
     }, [form.formState.errors])
 }
 
