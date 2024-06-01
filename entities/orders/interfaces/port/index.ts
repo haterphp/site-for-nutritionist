@@ -1,6 +1,6 @@
 import { IUser } from "@/shared/interfaces";
 import { OrderStatus } from "../../enum";
-import { IOrderProductEntity } from "../entities";
+import { ICreateOrderProductEntity } from "../entities";
 
 interface ICreateOrderPort {
     user: IUser['id']
@@ -8,7 +8,7 @@ interface ICreateOrderPort {
     phone?: string
     deliveryTime: string,
     status: OrderStatus
-    products: Omit<IOrderProductEntity, 'id'>[]
+    products: ICreateOrderProductEntity[]
 }
 
 type CreateOrderFormData = Pick<ICreateOrderPort, 'address' | 'deliveryTime' | 'phone'>

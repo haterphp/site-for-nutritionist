@@ -14,6 +14,7 @@ import { ICreateOrderErorrs } from "../../interfaces/errors"
 import { InternalCode } from "@/shared/enums"
 import { COMMON_ERRORS_MESSAGES } from "@/shared/messages/common"
 import { transformDateTimeToString } from "@/shared/helpers/date"
+import { useOrderStore } from "../../store"
 
 interface ICreateOrderRequest {
     form: UseFormReturn<CreateOrderFormData>
@@ -39,7 +40,7 @@ export const useCreateOrderRequest = (): ICreateOrderRequest => {
     const user = useUserStore(state => state.user)
     const [cartProducts, resetCart] = useCartStore(state => [state.entities, state.reset])
 
-    const _request = useMemo(() => new OrderRepository().create, [])
+    const _request = useOrderStore(state => state.create)
     const _validator = useMemo(() => new ValidationRunner(new CreateOrderValidatorFactory()), [])
     
     const handleOnSubmit = async (port: CreateOrderFormData): Promise<void> => {
@@ -54,11 +55,11 @@ export const useCreateOrderRequest = (): ICreateOrderRequest => {
                     ...port
                 }
 
-                await _request(payload).then(() => {
+                void _request(payload).then(() => {
                     router.push('/account/orders')
                     snackbar.make({ message: 'Заказ успешно создан', color: 'primary' })
                     resetCart()
-                })
+                })  
             }
         } catch (error) {
             const e = error as ExceptionService<ICreateOrderErorrs>

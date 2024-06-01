@@ -1,8 +1,14 @@
 import { OrderStatus } from "../../enum"
 
+interface ICreateOrderProductEntity {
+    product: number
+    count: number
+}
+
 interface IOrderProductEntity {
     id: number
-    product: number
+    title: string
+    url: string
     count: number
 }
 
@@ -13,4 +19,4 @@ interface IOrderEntity {
     products: IOrderProductEntity[]
 }
 
-export type { IOrderProductEntity, IOrderEntity }
+export type { ICreateOrderProductEntity, IOrderEntity }

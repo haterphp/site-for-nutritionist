@@ -1,12 +1,18 @@
 import { create, useStore } from "zustand";
 
-import { OrderStore, IOrderEntity } from "../interfaces";
+import { OrderStore } from "../interfaces";
 import { OrderRepository } from "../repository";
 
 const repository = new OrderRepository()
 
 export const orderStore = create<OrderStore>()((set, get) => ({
     entities: [],
+
+    create: async (port) => {
+        return repository.create(port).then((entity) => {
+            set(prev => ({ ...prev, entities: [entity].concat(prev.entities) }))
+        })
+    },
 
     loadEntities: async (): Promise<void> => {
         repository.getAll().then((entities) => {
@@ -16,12 +22,6 @@ export const orderStore = create<OrderStore>()((set, get) => ({
 
     reset: () => {
         set((prev) => ({ ...prev, entities: [] }))
-    },
-
-    create: (port) => {
-        repository.create(port).then((entity) => {
-            set(prev => ({ ...prev, entities: [entity].concat(prev.entities) }))
-        })
     },
 
 }))

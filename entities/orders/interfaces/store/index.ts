@@ -7,7 +7,7 @@ interface IOrderStoreState {
 
 interface IOrderStoreActions {
     loadEntities(): void
-    create(port: ICreateOrderPort): void
+    create(port: ICreateOrderPort): Promise<void>
     reset(): void
 }
 
