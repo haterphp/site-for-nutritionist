@@ -19,6 +19,7 @@ interface IInputProps extends Omit<ICommonHTMLProps, 'children'>, ICommonHTMLEve
     isDisabled?: boolean
     isError?: boolean
     isHideFeeback?: boolean
+    isLabelFloated?: boolean
 
     rows?: number
 }

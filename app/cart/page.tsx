@@ -1,5 +1,5 @@
 import { PageHeader } from "@/features/page-header";
-import { CartProductList } from "@/widgets/cart-list";
+import { CartProductList } from "@/features/lists/cart-list";
 import LayoutWithSidebar from "@/widgets/layouts/sidebar-layout";
 import { CartSidebar } from "@/widgets/sidebars/cart-sidebar";
 

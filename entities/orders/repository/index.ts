@@ -1,8 +1,13 @@
 import { HttpAppService } from "@/shared/utils";
-import { ICreateOrderPort, IOrdersRepository } from "../interfaces";
+import { ICreateOrderPort, IOrderEntity, IOrdersRepository } from "../interfaces";
 
 export class OrderRepository implements IOrdersRepository {
-    public async create(data: ICreateOrderPort): Promise<void> {
-        await HttpAppService.post('/api/orders', { body: { data } })
+    public getAll(): Promise<IOrderEntity[]> {
+        return Promise.resolve([])
+    }
+
+    public async create(data: ICreateOrderPort): Promise<IOrderEntity> {
+        if (data.phone === "") delete data.phone
+        return HttpAppService.post('/api/orders', { body: { data } })
     }
 }

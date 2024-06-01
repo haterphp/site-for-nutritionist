@@ -2,7 +2,7 @@ import { useMemo, useState } from "react"
 
 import { Button, CountInput } from "@/shared/components"
 
-import RequestCallbackModal from "@/features/modals/request-callback-modal"
+import RequestCallbackModal from "@/widgets/modals/request-callback-modal"
 
 import './index.css'
 import { useCartStore } from "@/entities/cart"

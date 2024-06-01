@@ -18,10 +18,6 @@
   @apply cursor-pointer hover:opacity-80 transition-colors;
 }
 
-.header-links {
-  @apply flex gap-10 absolute left-1/3;
-}
-
 .header-link {
   @apply transition-colors text-primary-main relative;
 }

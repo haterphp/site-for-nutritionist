@@ -1,0 +1,19 @@
+.drawer {
+  @apply fixed top-0 h-screen bg-secondary-dark z-20 transition-all;
+}
+
+.drawer > h2 {
+  @apply text-4xl px-5 py-10 text-white font-serif;
+}
+
+.drawer-links {
+  @apply flex flex-col;
+}
+
+.drawer-link {
+  @apply px-5 py-3 hover:bg-white/10 transition-colors text-white;
+}
+
+.drawer-link--active {
+  @apply bg-white/10;
+}

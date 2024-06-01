@@ -1,4 +1,5 @@
 import { IOrderEntity } from "../entities"
+import { ICreateOrderPort } from "../port"
 
 interface IOrderStoreState {
     entities: IOrderEntity[]
@@ -6,6 +7,7 @@ interface IOrderStoreState {
 
 interface IOrderStoreActions {
     loadEntities(): void
+    create(port: ICreateOrderPort): void
     reset(): void
 }
 

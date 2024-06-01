@@ -8,7 +8,7 @@ import './index.css'
 import { ICommonHTMLProps } from "@/shared/components/ui/common/interfaces";
 import { IArticleEntity } from "@/entities/articles";
 import { useCommentsStore } from "@/entities/comments";
-import { CreateCommentForm } from "../forms/create-comment";
+import { CreateCommentForm } from "../../../widgets/forms/create-comment";
 
 interface ICommentsSidebarProps extends Omit<ICommonHTMLProps, 'children'> {
     articleId: IArticleEntity['id']

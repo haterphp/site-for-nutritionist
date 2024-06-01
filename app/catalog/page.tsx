@@ -38,6 +38,7 @@ export default function CatalogPage() {
 
             <CardsGridTemplate
                 items={data}
+                className='items-start'
                 CardFactory={ProductCard}
                 onClick={handleOnClick}
             />   

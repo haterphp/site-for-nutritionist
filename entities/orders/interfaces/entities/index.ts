@@ -7,7 +7,7 @@ interface IOrderProductEntity {
 }
 
 interface IOrderEntity {
-    id: number
+    id: string
     status: OrderStatus
     address: string
     products: IOrderProductEntity[]

@@ -11,7 +11,7 @@ import { RichText } from "@/shared/components";
 
 import './index.css'
 import { CardsGridTemplate } from "@/widgets/layouts/cards-grid";
-import { RecomendationProductsList } from "@/widgets/recomendation-products-list";
+import { RecomendationProductsList } from "@/features/lists/recomendation-products-list";
 
 export default function ProductPage(): ReactNode {
     const params = useParams()

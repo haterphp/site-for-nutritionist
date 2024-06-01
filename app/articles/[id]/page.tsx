@@ -12,7 +12,7 @@ import { RichText } from "@/shared/components"
 
 import './index.css'
 
-const CommentsList = dynamic(() => import('@/widgets/comment-list'))
+const CommentsList = dynamic(() => import('@/features/lists/comment-list'))
 const ArticleSidebar = dynamic(() => import('@/widgets/sidebars/article-sidebar'))
 
 export default function CurrentArticlePage(): ReactNode {

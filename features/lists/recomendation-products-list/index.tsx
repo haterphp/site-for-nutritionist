@@ -1,5 +1,5 @@
 import { ProductCard } from "@/features/cards/product-card";
-import { CardsGridTemplate } from "../layouts/cards-grid";
+import { CardsGridTemplate } from "../../../widgets/layouts/cards-grid";
 import { ICatalogEntity, useCatalogStore } from "@/entities/catalog";
 import { useEffect, useMemo } from "react";
 

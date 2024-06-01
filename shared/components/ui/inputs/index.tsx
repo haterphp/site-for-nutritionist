@@ -36,6 +36,7 @@ const InputRenderFunction = (
     isError = false,
     isHideFeeback = false,
     isDisabled = false,
+    isLabelFloated = false,
     rows = 5,
     ...rest
   } = props;
@@ -118,7 +119,7 @@ const InputRenderFunction = (
         <label
           className={makeClassname(
             "input-label",
-            isDirty && "input-label--focus"
+            (isDirty || isLabelFloated) && "input-label--focus"
           )}
         >
           {label}

@@ -1,16 +1,16 @@
 'use client'
 
-import { useCatalogStore } from "@/entities/catalog"
-import { ProductCard } from "@/features/cards/product-card"
+import { useOrderStore } from "@/entities/orders"
+import { OrderCard } from "@/features/cards/order-card"
 import { PageHeader } from "@/features/page-header"
 import { CardsGridTemplate } from "@/widgets/layouts/cards-grid"
 import { useEffect } from "react"
 
 export default function AccountOrdersPage() {
 
-    const { data, load } = useCatalogStore(state => ({
-        data: state.cards,
-        load: state.loadCardsByCategory
+    const { data, load } = useOrderStore(state => ({
+        data: state.entities,
+        load: state.loadEntities
     }))
 
     useEffect(() => {
@@ -23,8 +23,7 @@ export default function AccountOrdersPage() {
 
             <CardsGridTemplate
                 items={data}
-                CardFactory={ProductCard}
-                context={{ isHideButton: true }}
+                CardFactory={OrderCard}
             />    
         </>
     )
