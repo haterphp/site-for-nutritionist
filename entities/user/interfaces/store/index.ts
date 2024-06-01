@@ -1,6 +1,5 @@
 import { IUser } from "@/shared/interfaces";
-import { IUserRepository } from "../repository";
-import { ILoginPort, ISignUpPort } from "../ports";
+import { ILoginPort, ISignUpPort, IUpdateUserPort } from "../ports";
 
 interface IUserStoreState {
     user: IUser | null
@@ -11,6 +10,7 @@ interface IUserStoreActions {
 
     login(port: ILoginPort): Promise<void>
     signUp(port: ISignUpPort): Promise<void>
+    updateUser(port: Omit<IUpdateUserPort, 'id'>): Promise<void>
 }
 
 type UserStore = IUserStoreState & IUserStoreActions

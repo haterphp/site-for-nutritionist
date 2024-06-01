@@ -1,5 +1,5 @@
 import { ExceptionService, HttpAppService } from "@/shared/utils";
-import { ILoginPort, ISignUpPort, IUserRepository } from "../interfaces";
+import { ILoginPort, ISignUpPort, IUpdateUserPort, IUserRepository } from "../interfaces";
 import { AuthUserResponse, IUserLoginResponse } from "../interfaces/responses";
 import { HttpCode, HttpHeaders, InternalCode, LocalStorageValues } from "@/shared/enums";
 
@@ -44,11 +44,18 @@ export class UserRepository implements IUserRepository {
     public async signUp(data: ISignUpPort): Promise<void> {
         await HttpAppService.post('api/auth/local/register', {
             body: {
-                name: data.name,
                 password: data.password,
                 email: data.email,
                 username: data.name
             }
         })
+    }
+
+    public async update({ id, ...payload }: IUpdateUserPort): Promise<void> {
+        const data = {
+            username: payload.name
+        }
+
+        await HttpAppService.put(`/api/user/me`, { body: { data }})
     }
 }

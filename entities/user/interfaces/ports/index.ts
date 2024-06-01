@@ -7,4 +7,9 @@ interface ISignUpPort extends ILoginPort {
     name: string
 }
 
-export type { ILoginPort, ISignUpPort }
+interface IUpdateUserPort {
+    id: number
+    name: string
+}
+
+export type { ILoginPort, ISignUpPort, IUpdateUserPort }
