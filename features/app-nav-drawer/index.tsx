@@ -4,22 +4,16 @@ import './index.css'
 import { makeClassname } from '@/shared/components';
 import { useDetectPath } from '@/shared/helpers/paths';
 
-const LINKS = [
-    { label: "Главная", to: "/" },
-    // { label: "Обо мне", to: "/about-me" },
-    { label: "Каталог", to: "/catalog" },
-    { label: "Статьи", to: "/articles" },
-  ];
-  
-
 interface IAppNavDrawer {
     width: number
     isOpen: boolean
+    links: Record<'to' | 'label', string>[]
+
     onClose(): void
 }
 
 export function AppNavDrawer (props: IAppNavDrawer) {
-    const { width, isOpen, onClose: handleOnClose } = props
+    const { width, isOpen, links, onClose: handleOnClose } = props
 
     const detect = useDetectPath()
 
@@ -30,7 +24,7 @@ export function AppNavDrawer (props: IAppNavDrawer) {
             <h2>Меню</h2>
 
             <div className="drawer-links">
-                { LINKS.map((link) => <Link
+                { links.map((link) => <Link
                     onClick={handleOnClose}
                     href={link.to}
                     className={makeClassname("drawer-link", detect(link.to) && 'drawer-link--active')}

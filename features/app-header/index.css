@@ -1,9 +1,5 @@
 .header {
-  @apply py-5 border-b-2 flex justify-between items-center relative;
-}
-
-.header-title {
-  @apply text-xl uppercase font-serif font-medium w-[340px];
+  @apply py-5 border-b-2 border-slate-100 flex justify-between items-center relative;
 }
 
 .header-callback-container {

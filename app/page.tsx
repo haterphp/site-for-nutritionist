@@ -81,7 +81,7 @@ export default function Home() {
         </div>
       </article>
 
-      <article className="min-w-[450px] p-10 px-[150px] rounded-lg bg-primary-main">
+      <article className="min-w-[450px] p-[50px] px-[150px] rounded-lg bg-primary-main">
         <h1 className="title title--white text-center mb-[50px]">Обо мне</h1>
 
         <div className="flex items-center justify-between">
@@ -105,7 +105,7 @@ export default function Home() {
         </div>
       </article>
 
-      <article className="min-w-[450px] p-10 flex flex-col gap-[50px] items-center">
+      <article className="min-w-[450px] p-[100px] flex flex-col gap-[50px] items-center">
         <h1 className="title text-center">Хиты продаж</h1>
 
         <CardsGridTemplate
@@ -117,12 +117,8 @@ export default function Home() {
         <Button size="large" onClick={handleOnRedirect('/catalog')}>Перейти в каталог</Button>
       </article>
 
-      <article className="min-w-[450px] p-10 flex flex-col gap-[50px] items-center">
-        <h1 className="title text-center">Отзывы моих клиентов</h1>
-
-        <RequestCallbackModal Button={({ open }) => (
-          <Button size="large" onClick={open}>Оставьте свой отзыв</Button>
-        )} />
+      <article className="min-w-[450px] p-[50px] flex flex-col gap-[50px] bg-primary-main items-center">
+        <h1 className="title title--white text-center">Отзывы моих клиентов</h1>
 
         <CardsGridTemplate
           items={REVIEWS}
@@ -130,6 +126,10 @@ export default function Home() {
           CardFactory={ReviewCard}
           context={{ isHideButton: true }}
         />
+
+        <RequestCallbackModal Button={({ open }) => (
+          <Button size="large" className="!bg-white !text-secondary-main hover:!bg-white/90" onClick={open}>Оставьте свой отзыв</Button>
+        )} />
             
       </article>
 

@@ -1,13 +1,21 @@
 'use client'
 
+import Footer from "@/features/app-footer";
+import Header from "@/features/app-header";
 import { AppNavDrawer } from "@/features/app-nav-drawer";
-import dynamic from "next/dynamic";
 
 import { PropsWithChildren, useMemo, useState } from "react";
 
-const Header = dynamic(() => import('@/features/app-header'))
 
 const DRAWER_WIDTH = 350
+
+const LINKS = [
+    { label: "Главная", to: "/" },
+    // { label: "Обо мне", to: "/about-me" },
+    { label: "Каталог", to: "/catalog" },
+    { label: "Статьи", to: "/articles" },
+];
+  
 
 interface ILayoutProps extends PropsWithChildren {}
 
@@ -29,7 +37,7 @@ export default function Layout(props: ILayoutProps) {
 
     return (
         <div className="overflow-x-hidden">
-            <AppNavDrawer width={DRAWER_WIDTH} isOpen={isOpen} onClose={handleOnClose} />
+            <AppNavDrawer links={LINKS} width={DRAWER_WIDTH} isOpen={isOpen} onClose={handleOnClose} />
 
             <div className="relative transition-transform" style={{ transform }}>
                 <div className="container mx-auto px-5 min-h-screen ">
@@ -38,6 +46,8 @@ export default function Layout(props: ILayoutProps) {
                     <main className="py-10">
                         {children}
                     </main>
+
+                    <Footer links={LINKS} />
                 </div>
 
                 { isOpen && <div className="w-full h-screen absolute top-0 left-0 z-20" onClick={handleOnClose}/> }

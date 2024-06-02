@@ -16,6 +16,7 @@ import { MouseEventHandler } from "react";
 import { useUserStore } from "@/entities/user";
 
 import "./index.css";
+import Logo from "../app-logo";
 
 const RequestCallbackModal = dynamic(
   () => import("@/widgets/modals/request-callback-modal")
@@ -49,13 +50,7 @@ export default function Header(props: IHeaderProps): JSX.Element {
             <MenuIcon />
           </button>
 
-          <h2 className="header-title">
-            <span className="block w-[150px]" style={{ letterSpacing: '0.03rem' }}>Нутрициолог</span>
-            
-            <span>
-              Мария <span className="text-primary-main">Коляда</span>
-            </span>
-          </h2>
+          <Logo />
         </div>
 
           <div className="header-left-content">
