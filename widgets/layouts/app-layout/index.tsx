@@ -40,7 +40,7 @@ export default function Layout(props: ILayoutProps) {
             <AppNavDrawer links={LINKS} width={DRAWER_WIDTH} isOpen={isOpen} onClose={handleOnClose} />
 
             <div className="relative transition-transform" style={{ transform }}>
-                <div className="container mx-auto px-5 min-h-screen ">
+                <div className="container mx-auto px-5 min-h-screen flex flex-col">
                     <Header isDrawerOpen={isOpen} onDrawerButtonClick={handleOnToggle} />
 
                     <main className="py-10">

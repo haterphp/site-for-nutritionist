@@ -1,3 +1,7 @@
+.app-footer {
+  @apply mt-auto;
+}
+
 .app-footer-content {
   @apply flex justify-between items-center py-5;
 }

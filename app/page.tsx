@@ -117,7 +117,7 @@ export default function Home() {
         <Button size="large" onClick={handleOnRedirect('/catalog')}>Перейти в каталог</Button>
       </article>
 
-      <article className="min-w-[450px] p-[50px] flex flex-col gap-[50px] bg-primary-main items-center">
+      <article className="min-w-[450px] p-[50px] flex flex-col gap-[50px] bg-primary-main items-center rounded-lg">
         <h1 className="title title--white text-center">Отзывы моих клиентов</h1>
 
         <CardsGridTemplate
