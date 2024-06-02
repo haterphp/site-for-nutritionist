@@ -1,0 +1,11 @@
+.title {
+  @apply text-4xl font-serif;
+}
+
+.title--white {
+  @apply text-white;
+}
+
+.slide {
+  @apply flex items-center justify-center;
+}

@@ -35,9 +35,9 @@ export default function Layout(props: ILayoutProps) {
                 <div className="container mx-auto px-5 min-h-screen ">
                     <Header isDrawerOpen={isOpen} onDrawerButtonClick={handleOnToggle} />
 
-                    <div className="py-10">
+                    <main className="py-10">
                         {children}
-                    </div>
+                    </main>
                 </div>
 
                 { isOpen && <div className="w-full h-screen absolute top-0 left-0 z-20" onClick={handleOnClose}/> }

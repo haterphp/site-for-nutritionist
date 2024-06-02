@@ -67,7 +67,7 @@ export function ProductCard(props: ICatalogEntity): JSX.Element {
                 </Button>
             )}
 
-            {entityInCart !== undefined && (
+            {!isHideButton && entityInCart !== undefined && (
                 <div className="product-card-badge">Товар уже в корзине!</div>
             )}
         </article>

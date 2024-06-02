@@ -1,0 +1,15 @@
+.review-card {
+  @apply flex flex-col items-center gap-3 pt-0 pb-10 relative;
+}
+
+.review-card-title {
+  @apply text-xl text-center;
+}
+
+.review-card-comment {
+  @apply text-sm text-secondary-main/70 text-center;
+}
+
+.review-card-image {
+  @apply w-[120px] h-[120px] -mt-[60px] object-cover object-center rounded-full;
+}
