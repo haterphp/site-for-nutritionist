@@ -1,3 +1,4 @@
+import { IUser } from "@/shared/interfaces"
 import { IOrderEntity } from "../entities"
 import { ICreateOrderPort } from "../port"
 
@@ -6,7 +7,7 @@ interface IOrderStoreState {
 }
 
 interface IOrderStoreActions {
-    loadEntities(): void
+    loadEntities(id: IUser['id']): void
     create(port: ICreateOrderPort): Promise<void>
     reset(): void
 }

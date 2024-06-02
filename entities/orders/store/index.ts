@@ -2,6 +2,7 @@ import { create, useStore } from "zustand";
 
 import { OrderStore } from "../interfaces";
 import { OrderRepository } from "../repository";
+import { IUser } from "@/shared/interfaces";
 
 const repository = new OrderRepository()
 
@@ -14,8 +15,8 @@ export const orderStore = create<OrderStore>()((set, get) => ({
         })
     },
 
-    loadEntities: async (): Promise<void> => {
-        repository.getAll().then((entities) => {
+    loadEntities: async (id: IUser['id']): Promise<void> => {
+        repository.getAll(id).then((entities) => {
             set(prev => ({ ...prev, entities }))
         })
     },

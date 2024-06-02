@@ -36,7 +36,7 @@ export default function RequestCallbackModal(
       <OpenButton {...state} />
 
       <Modal isOpen={state.isOpen} onClose={handleOnClose}>
-        <ModalTitle title="Запрос на обратный звонок" onClose={handleOnClose} />
+        <ModalTitle title="Обратная связь" onClose={handleOnClose} />
 
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <ModalContainer className="flex flex-col gap-1">
@@ -44,7 +44,7 @@ export default function RequestCallbackModal(
 
               <Input label={"Почта"} {...register('email')} />
 
-              <Input label={"Номер телефона"} {...register('phone')} />
+              <Input type="textarea" label={"Комментарий"} {...register('description')} />
           </ModalContainer>
 
           <ModalActions>

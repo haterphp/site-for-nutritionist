@@ -8,6 +8,6 @@
   }
 
   .paper {
-    @apply p-3 border-2 border-slate-100 rounded;
+    @apply p-3 border shadow-md border-slate-200 rounded;
   }
 }

@@ -51,7 +51,7 @@ export function ProductPriceSidebar (props: ICatalogEntity) {
                 
                 <span>или</span>
 
-                <RequestCallbackModal Button={({ open }) => (<span className="product-sidebar-request-callback" onClick={open}>Заказать обратный звонок</span>)} />
+                <RequestCallbackModal Button={({ open }) => (<span className="product-sidebar-request-callback" onClick={open}>Задать свой вопрос</span>)} />
             </div>
         </div>
     )

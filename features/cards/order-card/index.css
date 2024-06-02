@@ -1,0 +1,47 @@
+.order-card {
+  @apply p-3;
+}
+
+.order-card-title {
+  @apply text-xl;
+}
+
+.order-card-status {
+  @apply px-3 py-1 text-[13px] bg-slate-100 rounded-full;
+}
+
+.order-card-status.status-primary {
+  @apply bg-primary-main text-white;
+}
+
+.order-card-status.status-secondary {
+  @apply bg-secondary-main text-white;
+}
+
+.order-card-status.status-error {
+  @apply bg-red-400 text-white;
+}
+
+.order-card-subtext {
+  @apply text-sm text-secondary-main/50 my-2;
+}
+
+.order-card-products-list {
+  @apply flex gap-3 flex-wrap;
+}
+
+.order-card-product-item {
+  @apply relative flex items-center justify-center cursor-pointer;
+}
+
+.order-card-product-count {
+  @apply absolute z-10 text-xl font-semibold text-white opacity-0 transition-all;
+}
+
+.order-card-product-item:hover .order-card-product-image {
+  @apply brightness-50 transition-all;
+}
+
+.order-card-product-item:hover .order-card-product-count {
+  @apply opacity-100;
+}

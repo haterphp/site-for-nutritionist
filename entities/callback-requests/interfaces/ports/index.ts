@@ -1,7 +1,7 @@
 interface ICreateCallbackRequestPort {
     name: string
     email: string
-    phone: string
+    description: string
 }
 
 export type { ICreateCallbackRequestPort }

@@ -18,7 +18,7 @@ interface IUseCreateCallbackRequestRequest {
 const DEFAULT_VALUES: ICreateCallbackRequestPort = {
     name: '',
     email: '',
-    phone: '',
+    description: '',
 }
 
 export const useCreateCallbackRequestRequest = (onSuccess: () => void): IUseCreateCallbackRequestRequest => {

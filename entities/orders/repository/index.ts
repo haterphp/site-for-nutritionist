@@ -1,11 +1,14 @@
 import { HttpAppService } from "@/shared/utils";
 import { ICreateOrderPort, IOrderEntity, IOrdersRepository } from "../interfaces";
 import { IGetAllOrders, IGetOneOrder, OrderResponseItem } from "../interfaces/responses";
+import { IUser } from "@/shared/interfaces";
 
 export class OrderRepository implements IOrdersRepository {
-    public getAll(): Promise<IOrderEntity[]> {
+    public getAll(userId: IUser['id']): Promise<IOrderEntity[]> {
         const params = {
-            populate: { 0: 'products.product.images' }
+            populate: { 0: 'products.product.images' },
+            filters: { user: { '$eq': userId } },
+            sort: 'createdAt:desc'
         }
 
         return HttpAppService.get<IGetAllOrders>('/api/orders', { params }).then(({ data }) => {
